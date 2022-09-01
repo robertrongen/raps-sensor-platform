@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C MCU JLink  Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "cwd": "${workspaceFolder}",
+        "MIMode": "gdb",
+        "miDebuggerServerAddress": "localhost:2331",
+        "logging": {
+            "engineLogging": true
+        },
+        "program": "${workspaceFolder}\\out\\debug\\firmware.elf",
+        "miDebuggerPath": "arm-none-eabi-gdb",
+        "debugServerPath": "make",
+        "debugServerArgs": "-w -C \"${workspaceFolder}\" jlink",
+        "serverStarted": "Connected to target",
+        "serverLaunchTimeout": 10000,
+        "windows": {
+            "miDebuggerPath": "arm-none-eabi-gdb.exe"
+        }
+    },
+    {
+      "name": "Black Magic Probe",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "targetArchitecture": "arm",
+      "logging": {
+          "engineLogging": true
+      },
+      "program": "${workspaceFolder}\\out\\debug\\firmware.elf",
+      "miDebuggerPath": "arm-none-eabi-gdb",
+      "customLaunchSetupCommands": [
+          {
+            "text": "cd ${workspaceFolder}\\out\\debug"
+          },
+          {
+            "text": "target extended-remote \\\\.\\COM9" /* replace with your COM or /dev/ttyX */
+          },
+          {
+            "text": "monitor swdp_scan"
+          },
+          {
+            "text": "attach 1"
+          },
+          {
+            "text": "file firmware.elf"
+          },
+          {
+            "text": "load"
+          },
+          {
+              "text": "cd ${workspaceFolder}"
+            },
+          {
+            "text": "set mem inaccessible-by-default off"
+          },
+          {
+            "text": "break main"
+          }
+        ],
+      "serverLaunchTimeout": 10000,
+      "windows": {
+          "miDebuggerPath": "arm-none-eabi-gdb.exe"
+      }
+    }
+  ]
+}

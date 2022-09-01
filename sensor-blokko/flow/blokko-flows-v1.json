@@ -1,0 +1,2148 @@
+[
+    {
+        "id": "26738a3.2c56b76",
+        "type": "tab",
+        "label": "BLOKKO",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d69e891f.05eac8",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/10",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 130,
+        "y": 2360,
+        "wires": [
+            [
+                "dfef50c8.f51c1"
+            ]
+        ]
+    },
+    {
+        "id": "bc53da62.f94488",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:10/blokko/order/qr/10",
+        "payload": "\"10\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2420,
+        "wires": [
+            [
+                "ba7b6072.afd6c"
+            ]
+        ]
+    },
+    {
+        "id": "20449895.f3b8a8",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:10/blokko/order/qr/10",
+        "payload": "\"100\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2460,
+        "wires": [
+            [
+                "ba7b6072.afd6c"
+            ]
+        ]
+    },
+    {
+        "id": "a30a907e.982e8",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:10/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2520,
+        "wires": [
+            [
+                "2ee27ea0.4d7962"
+            ]
+        ]
+    },
+    {
+        "id": "ba7b6072.afd6c",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId10",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 2420,
+        "wires": [
+            [
+                "6aed7518.7bcd0c"
+            ]
+        ]
+    },
+    {
+        "id": "db270384.d2d73",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:10/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2560,
+        "wires": [
+            [
+                "2ee27ea0.4d7962"
+            ]
+        ]
+    },
+    {
+        "id": "2ee27ea0.4d7962",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId10",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2540,
+        "wires": [
+            [
+                "cffc2674.a246d8",
+                "6aed7518.7bcd0c"
+            ]
+        ]
+    },
+    {
+        "id": "cffc2674.a246d8",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:10/blokko/order/qr/10",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 2560,
+        "wires": []
+    },
+    {
+        "id": "6aed7518.7bcd0c",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 2460,
+        "wires": []
+    },
+    {
+        "id": "5a1eeffe.c5bd2",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/0",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 2660,
+        "wires": [
+            [
+                "33b0c34e.3db58c"
+            ]
+        ]
+    },
+    {
+        "id": "fc67cd99.2c366",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:0/blokko/order/qr/0",
+        "payload": "\"0\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2700,
+        "wires": [
+            [
+                "89dd3388.14e11"
+            ]
+        ]
+    },
+    {
+        "id": "d77370e2.3c8f9",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:0/blokko/order/qr/0",
+        "payload": "\"00\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2740,
+        "wires": [
+            [
+                "89dd3388.14e11"
+            ]
+        ]
+    },
+    {
+        "id": "9d61396d.4dc218",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:0/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2800,
+        "wires": [
+            [
+                "17f852be.1d97cd"
+            ]
+        ]
+    },
+    {
+        "id": "89dd3388.14e11",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId0",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "",
+                "fromt": "re",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2720,
+        "wires": [
+            [
+                "9c79f5b4.aa2c78"
+            ]
+        ]
+    },
+    {
+        "id": "c0bf8da8.465ae",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:0/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2840,
+        "wires": [
+            [
+                "17f852be.1d97cd"
+            ]
+        ]
+    },
+    {
+        "id": "17f852be.1d97cd",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId0",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2820,
+        "wires": [
+            [
+                "51a2d70e.792498",
+                "9c79f5b4.aa2c78"
+            ]
+        ]
+    },
+    {
+        "id": "51a2d70e.792498",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:0/blokko/order/qr/0",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 2840,
+        "wires": []
+    },
+    {
+        "id": "9c79f5b4.aa2c78",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 2760,
+        "wires": []
+    },
+    {
+        "id": "88ac968b.66f958",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/9",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 2100,
+        "wires": [
+            [
+                "d6dcde75.2f9af"
+            ]
+        ]
+    },
+    {
+        "id": "e39da7ee.adff88",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:9/blokko/order/qr/9",
+        "payload": "\"9\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2140,
+        "wires": [
+            [
+                "cca63795.556c48"
+            ]
+        ]
+    },
+    {
+        "id": "c40f9d5e.b9239",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:9/blokko/order/qr/9",
+        "payload": "\"99\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 2180,
+        "wires": [
+            [
+                "cca63795.556c48"
+            ]
+        ]
+    },
+    {
+        "id": "4c58f342.35fc5c",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:9/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2240,
+        "wires": [
+            [
+                "92a3d40a.2eba58"
+            ]
+        ]
+    },
+    {
+        "id": "cca63795.556c48",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId9",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2160,
+        "wires": [
+            [
+                "ee6baae0.6210d8"
+            ]
+        ]
+    },
+    {
+        "id": "5ae507b4.dc2148",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:9/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2280,
+        "wires": [
+            [
+                "92a3d40a.2eba58"
+            ]
+        ]
+    },
+    {
+        "id": "92a3d40a.2eba58",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId9",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2260,
+        "wires": [
+            [
+                "ce00f8a.4090508",
+                "ee6baae0.6210d8"
+            ]
+        ]
+    },
+    {
+        "id": "ce00f8a.4090508",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:9/blokko/order/qr/9",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "ee6baae0.6210d8",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "9236a2e1.e8b74",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/8",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 1840,
+        "wires": [
+            [
+                "facf09ad.818cc8"
+            ]
+        ]
+    },
+    {
+        "id": "6a4fa82c.baec98",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:8/blokko/order/qr/8",
+        "payload": "\"8\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1880,
+        "wires": [
+            [
+                "6c294a6f.e28b24"
+            ]
+        ]
+    },
+    {
+        "id": "96e51e3.24dfbe",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:8/blokko/order/qr/8",
+        "payload": "\"88\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1920,
+        "wires": [
+            [
+                "6c294a6f.e28b24"
+            ]
+        ]
+    },
+    {
+        "id": "52e06c64.306804",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:8/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1980,
+        "wires": [
+            [
+                "1eef44d.0c4f5bb"
+            ]
+        ]
+    },
+    {
+        "id": "6c294a6f.e28b24",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId8",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1900,
+        "wires": [
+            [
+                "18cc0d7d.e993b3"
+            ]
+        ]
+    },
+    {
+        "id": "4bc0b2ea.c7567c",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:8/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 2020,
+        "wires": [
+            [
+                "1eef44d.0c4f5bb"
+            ]
+        ]
+    },
+    {
+        "id": "1eef44d.0c4f5bb",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId8",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 2000,
+        "wires": [
+            [
+                "a7a385db.742948",
+                "18cc0d7d.e993b3"
+            ]
+        ]
+    },
+    {
+        "id": "a7a385db.742948",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:8/blokko/order/qr/8",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 2000,
+        "wires": []
+    },
+    {
+        "id": "18cc0d7d.e993b3",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "dced5ac7.282e48",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/6",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 1340,
+        "wires": [
+            [
+                "d5db36ae.8366a8"
+            ]
+        ]
+    },
+    {
+        "id": "88c9b9a.52cf648",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:6/blokko/order/qr/6",
+        "payload": "\"6\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1380,
+        "wires": [
+            [
+                "450ccf65.793eb"
+            ]
+        ]
+    },
+    {
+        "id": "a4a640e1.eb30d",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:6/blokko/order/qr/6",
+        "payload": "\"66\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1420,
+        "wires": [
+            [
+                "450ccf65.793eb"
+            ]
+        ]
+    },
+    {
+        "id": "53f5d200.6ac3a",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:6/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1480,
+        "wires": [
+            [
+                "53147ed5.fe36c"
+            ]
+        ]
+    },
+    {
+        "id": "450ccf65.793eb",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId6",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1400,
+        "wires": [
+            [
+                "8c14c6b7.8554e8"
+            ]
+        ]
+    },
+    {
+        "id": "7cb008d5.158a38",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:6/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1520,
+        "wires": [
+            [
+                "53147ed5.fe36c"
+            ]
+        ]
+    },
+    {
+        "id": "53147ed5.fe36c",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId6",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1500,
+        "wires": [
+            [
+                "84886756.d384b8",
+                "8c14c6b7.8554e8"
+            ]
+        ]
+    },
+    {
+        "id": "84886756.d384b8",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:6/blokko/order/qr/6",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "8c14c6b7.8554e8",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "3066c18.328cc3e",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/5",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 1080,
+        "wires": [
+            [
+                "f9aa04e4.fb4a28"
+            ]
+        ]
+    },
+    {
+        "id": "48c2d790.57b268",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:5/blokko/order/qr/5",
+        "payload": "\"5\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1120,
+        "wires": [
+            [
+                "fd93b6a9.136128"
+            ]
+        ]
+    },
+    {
+        "id": "848b2d9f.1adcb",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:5/blokko/order/qr/5",
+        "payload": "\"55\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1160,
+        "wires": [
+            [
+                "fd93b6a9.136128"
+            ]
+        ]
+    },
+    {
+        "id": "2d90b5c4.84c2ea",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:5/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1220,
+        "wires": [
+            [
+                "5ceb39db.23add8"
+            ]
+        ]
+    },
+    {
+        "id": "fd93b6a9.136128",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId5",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1140,
+        "wires": [
+            [
+                "b66f63b4.d805"
+            ]
+        ]
+    },
+    {
+        "id": "4c389b39.2ba834",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:5/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1260,
+        "wires": [
+            [
+                "5ceb39db.23add8"
+            ]
+        ]
+    },
+    {
+        "id": "5ceb39db.23add8",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId5",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1240,
+        "wires": [
+            [
+                "30c35640.f1365a",
+                "b66f63b4.d805"
+            ]
+        ]
+    },
+    {
+        "id": "30c35640.f1365a",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:5/blokko/order/qr/5",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "b66f63b4.d805",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "6e847fd0.e18e3",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/4",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 820,
+        "wires": [
+            [
+                "7b5dd3fa.8cbb6c"
+            ]
+        ]
+    },
+    {
+        "id": "ccd44e28.b1a7f",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:4/blokko/order/qr/4",
+        "payload": "\"4\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 860,
+        "wires": [
+            [
+                "6bda8421.3275dc"
+            ]
+        ]
+    },
+    {
+        "id": "ead0a691.16bc38",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:4/blokko/order/qr/4",
+        "payload": "\"44\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 900,
+        "wires": [
+            [
+                "6bda8421.3275dc"
+            ]
+        ]
+    },
+    {
+        "id": "9145376e.f25498",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:4/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 960,
+        "wires": [
+            [
+                "879354af.7cf4f8"
+            ]
+        ]
+    },
+    {
+        "id": "6bda8421.3275dc",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId4",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 880,
+        "wires": [
+            [
+                "26d35b3a.bd8db4"
+            ]
+        ]
+    },
+    {
+        "id": "bbcbfc82.ec993",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:4/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1000,
+        "wires": [
+            [
+                "879354af.7cf4f8"
+            ]
+        ]
+    },
+    {
+        "id": "879354af.7cf4f8",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId4",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 980,
+        "wires": [
+            [
+                "3db26204.97f5de",
+                "26d35b3a.bd8db4"
+            ]
+        ]
+    },
+    {
+        "id": "3db26204.97f5de",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:4/blokko/order/qr/4",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "26d35b3a.bd8db4",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "de0e5b8b.00cfb8",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/3",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "f08de8f0.c7d9b8"
+            ]
+        ]
+    },
+    {
+        "id": "b40e5299.f24e9",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:3/blokko/order/qr/3",
+        "payload": "\"3\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "9d4e1ed6.12402"
+            ]
+        ]
+    },
+    {
+        "id": "2d39b88f.45cfa8",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:3/blokko/order/qr/3",
+        "payload": "\"33\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 640,
+        "wires": [
+            [
+                "9d4e1ed6.12402"
+            ]
+        ]
+    },
+    {
+        "id": "daa01a87.54d7e8",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:3/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 700,
+        "wires": [
+            [
+                "bea48706.c1ccf8"
+            ]
+        ]
+    },
+    {
+        "id": "9d4e1ed6.12402",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId3",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 620,
+        "wires": [
+            [
+                "1b860ed4.311891"
+            ]
+        ]
+    },
+    {
+        "id": "a0aabfce.e885d",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:3/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 740,
+        "wires": [
+            [
+                "bea48706.c1ccf8"
+            ]
+        ]
+    },
+    {
+        "id": "bea48706.c1ccf8",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId3",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 720,
+        "wires": [
+            [
+                "cc84ffa5.490b8",
+                "1b860ed4.311891"
+            ]
+        ]
+    },
+    {
+        "id": "cc84ffa5.490b8",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:3/blokko/order/qr/3",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "1b860ed4.311891",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "f7496040.a0ac",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/2",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "76d474bc.a3d66c"
+            ]
+        ]
+    },
+    {
+        "id": "4df37343.2ae39c",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:2/blokko/order/qr/2",
+        "payload": "\"2\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "f509729d.138b9"
+            ]
+        ]
+    },
+    {
+        "id": "a3136233.af459",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:2/blokko/order/qr/2",
+        "payload": "\"22\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "f509729d.138b9"
+            ]
+        ]
+    },
+    {
+        "id": "189e07ed.e42578",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:2/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "b1b24e0c.4e4db"
+            ]
+        ]
+    },
+    {
+        "id": "f509729d.138b9",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId2",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 360,
+        "wires": [
+            [
+                "b2fa0ca3.6ee68"
+            ]
+        ]
+    },
+    {
+        "id": "42bb675f.160e48",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:2/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 480,
+        "wires": [
+            [
+                "b1b24e0c.4e4db"
+            ]
+        ]
+    },
+    {
+        "id": "b1b24e0c.4e4db",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId2",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 460,
+        "wires": [
+            [
+                "52d8c344.504eac",
+                "b2fa0ca3.6ee68"
+            ]
+        ]
+    },
+    {
+        "id": "52d8c344.504eac",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:2/blokko/order/qr/2",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b2fa0ca3.6ee68",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "92eeeae6.05bb88",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "fe05ebee.6ebe08"
+            ]
+        ]
+    },
+    {
+        "id": "f91d45f.fab28b8",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:1/blokko/order/qr/1",
+        "payload": "\"1\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "f98e3136.0053f"
+            ]
+        ]
+    },
+    {
+        "id": "85fffc31.7b186",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:1/blokko/order/qr/1",
+        "payload": "\"11\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "f98e3136.0053f"
+            ]
+        ]
+    },
+    {
+        "id": "fd42a2ee.5c5c8",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:1/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "681230f4.04e4f"
+            ]
+        ]
+    },
+    {
+        "id": "f98e3136.0053f",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId1",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 100,
+        "wires": [
+            [
+                "88354bfa.ac2bf8"
+            ]
+        ]
+    },
+    {
+        "id": "e82a72ba.1e8fd",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:1/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "681230f4.04e4f"
+            ]
+        ]
+    },
+    {
+        "id": "681230f4.04e4f",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId1",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 200,
+        "wires": [
+            [
+                "1d3d713a.eda96f",
+                "88354bfa.ac2bf8"
+            ]
+        ]
+    },
+    {
+        "id": "1d3d713a.eda96f",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:1/blokko/order/qr/1",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "88354bfa.ac2bf8",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "33b0c34e.3db58c",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 2660,
+        "wires": [
+            [
+                "89dd3388.14e11"
+            ]
+        ]
+    },
+    {
+        "id": "dfef50c8.f51c1",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 2360,
+        "wires": [
+            [
+                "ba7b6072.afd6c"
+            ]
+        ]
+    },
+    {
+        "id": "d6dcde75.2f9af",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 2100,
+        "wires": [
+            [
+                "cca63795.556c48"
+            ]
+        ]
+    },
+    {
+        "id": "fe05ebee.6ebe08",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 40,
+        "wires": [
+            [
+                "f98e3136.0053f"
+            ]
+        ]
+    },
+    {
+        "id": "76d474bc.a3d66c",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "f509729d.138b9"
+            ]
+        ]
+    },
+    {
+        "id": "f08de8f0.c7d9b8",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "9d4e1ed6.12402"
+            ]
+        ]
+    },
+    {
+        "id": "7b5dd3fa.8cbb6c",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 820,
+        "wires": [
+            [
+                "6bda8421.3275dc"
+            ]
+        ]
+    },
+    {
+        "id": "f9aa04e4.fb4a28",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 1080,
+        "wires": [
+            [
+                "fd93b6a9.136128"
+            ]
+        ]
+    },
+    {
+        "id": "d5db36ae.8366a8",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 1340,
+        "wires": [
+            [
+                "450ccf65.793eb"
+            ]
+        ]
+    },
+    {
+        "id": "facf09ad.818cc8",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 1840,
+        "wires": [
+            [
+                "6c294a6f.e28b24"
+            ]
+        ]
+    },
+    {
+        "id": "91ca697e.2ab928",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "blokko/order/qr/7",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "5b97d9fa.230058",
+        "x": 120,
+        "y": 1600,
+        "wires": [
+            [
+                "8a8ae52a.a29698"
+            ]
+        ]
+    },
+    {
+        "id": "94c86a00.05b0a8",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:7/blokko/order/qr/7",
+        "payload": "\"7\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1640,
+        "wires": [
+            [
+                "649bc57f.8a97bc"
+            ]
+        ]
+    },
+    {
+        "id": "ea917bdf.3c6278",
+        "type": "inject",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:7/blokko/order/qr/7",
+        "payload": "\"77\"",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1680,
+        "wires": [
+            [
+                "649bc57f.8a97bc"
+            ]
+        ]
+    },
+    {
+        "id": "317d4a9f.175206",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:7/update_request",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1740,
+        "wires": [
+            [
+                "85816e15.9c99d"
+            ]
+        ]
+    },
+    {
+        "id": "649bc57f.8a97bc",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "orderId7",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1660,
+        "wires": [
+            [
+                "e75db534.52f768"
+            ]
+        ]
+    },
+    {
+        "id": "eb8be17c.eefd",
+        "type": "mqtt in",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:7/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 180,
+        "y": 1780,
+        "wires": [
+            [
+                "85816e15.9c99d"
+            ]
+        ]
+    },
+    {
+        "id": "85816e15.9c99d",
+        "type": "change",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "orderId7",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 1760,
+        "wires": [
+            [
+                "f8c1cf2d.9e2cf",
+                "e75db534.52f768"
+            ]
+        ]
+    },
+    {
+        "id": "f8c1cf2d.9e2cf",
+        "type": "mqtt out",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "topic": "node/bcf-qr-code:7/blokko/order/qr/7",
+        "qos": "",
+        "retain": "",
+        "broker": "29fba84a.b2af58",
+        "x": 830,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "e75db534.52f768",
+        "type": "debug",
+        "z": "26738a3.2c56b76",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "8a8ae52a.a29698",
+        "type": "function",
+        "z": "26738a3.2c56b76",
+        "name": "Make string",
+        "func": "msg.payload = \"\\\"\" + msg.payload + \"\\\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 1600,
+        "wires": [
+            [
+                "649bc57f.8a97bc"
+            ]
+        ]
+    },
+    {
+        "id": "5b97d9fa.230058",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "http://broker.hivemq.com",
+        "port": "8000",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "order",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "29fba84a.b2af58",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

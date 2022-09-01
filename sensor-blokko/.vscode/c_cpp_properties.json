@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "STM32L083",
+            "defines": [
+                "STM32L083xx"
+            ]
+        }
+    ],
+    "version": 4
+}

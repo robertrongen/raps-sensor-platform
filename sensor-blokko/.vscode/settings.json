@@ -1,0 +1,21 @@
+{
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/app",
+        "${workspaceFolder}/sdk/bcl/inc",
+        "${workspaceFolder}/sdk/bcl/stm/inc",
+        "${workspaceFolder}/sdk/sys/inc",
+        "${workspaceFolder}/sdk/stm/spirit1/inc",
+        "${workspaceFolder}/sdk/stm/hal/inc",
+        "${workspaceFolder}/sdk/stm/usb/inc",
+        "${default}"
+      ],
+    "C_Cpp.default.browse.path": [
+        "${workspaceFolder}/app",
+        "${workspaceFolder}/sdk/bcl",
+        "${workspaceFolder}/sdk/sys",
+        "${workspaceFolder}/sdk/stm",
+        "${default}"
+    ],
+    "C_Cpp.default.cStandard": "c11",
+    "terminal.integrated.shell.windows": "C:\\Windows\\sysnative\\cmd.exe"
+}
