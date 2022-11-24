@@ -1,0 +1,846 @@
+[
+    {
+        "id": "dff833c3.cc87",
+        "type": "tab",
+        "label": "SMARTYS",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "54b19c5.d4f5664",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "TempGreen",
+        "topic": "node/smartys-temp:green/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "547a7403.0fd35c",
+                "56f673ae.8b078c"
+            ]
+        ]
+    },
+    {
+        "id": "234ce52.cfd7b1a",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltGreen",
+        "topic": "node/smartys-temp:green/battery/-/voltage",
+        "qos": "2",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 100,
+        "wires": [
+            [
+                "cbc2cac8.ffa588",
+                "8e93a405.cdf438"
+            ]
+        ]
+    },
+    {
+        "id": "cbc2cac8.ffa588",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-green/voltage",
+        "topic": "smartys-green/voltage",
+        "qos": "",
+        "retain": "",
+        "broker": "2a88985b.678248",
+        "x": 1060,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "638a1f55.9573e",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "TempOrange",
+        "topic": "node/smartys-temp:orange/thermometer/0:0/temperature",
+        "qos": "2",
+        "broker": "29fba84a.b2af58",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "b9234a0.03e8db8"
+            ]
+        ]
+    },
+    {
+        "id": "b9234a0.03e8db8",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-orange/temp",
+        "topic": "smartys-orange/temp",
+        "qos": "",
+        "retain": "",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f908a579.7bea38",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "TempBlue",
+        "topic": "node/smartys-temp:blue/thermometer/0:0/temperature",
+        "qos": "2",
+        "broker": "29fba84a.b2af58",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "f754367b.057908"
+            ]
+        ]
+    },
+    {
+        "id": "f754367b.057908",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-blue/temp",
+        "topic": "smartys-blue/temp",
+        "qos": "",
+        "retain": "",
+        "broker": "2a88985b.678248",
+        "x": 380,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "98315d3a.63519",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "PushButton",
+        "topic": "node/push-button:0/push-button/-/event-count",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "cd792544.6b79f8"
+            ]
+        ]
+    },
+    {
+        "id": "cd792544.6b79f8",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartysButton",
+        "topic": "smartys-button/count",
+        "qos": "",
+        "retain": "",
+        "broker": "2a88985b.678248",
+        "x": 370,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "547a7403.0fd35c",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-green/temp",
+        "topic": "smartys-green/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d47cb89b.2acdd8",
+        "type": "inject",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "20",
+        "payloadType": "num",
+        "x": 170,
+        "y": 40,
+        "wires": [
+            [
+                "547a7403.0fd35c"
+            ]
+        ]
+    },
+    {
+        "id": "56f673ae.8b078c",
+        "type": "debug",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e1e061c7.33f5e",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 1",
+        "topic": "node/smartys-temp:883391/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "7dcd7a28.594004"
+            ]
+        ]
+    },
+    {
+        "id": "7dcd7a28.594004",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-883391/temp",
+        "topic": "smartys-883391/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "13fd3906.8bf937",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 2",
+        "topic": "node/smartys-temp:665181/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 380,
+        "wires": [
+            [
+                "e8c184f2.ab1768"
+            ]
+        ]
+    },
+    {
+        "id": "e8c184f2.ab1768",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-665181/temp",
+        "topic": "smartys-665181/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a6270d6f.fcfec",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 3",
+        "topic": "node/smartys-temp:595536/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "8536ed1f.08e25"
+            ]
+        ]
+    },
+    {
+        "id": "8536ed1f.08e25",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-595536/temp",
+        "topic": "smartys-595536/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "28f08418.99fb0c",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 4",
+        "topic": "node/smartys-temp:551201/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 500,
+        "wires": [
+            [
+                "a62eee18.2b74f"
+            ]
+        ]
+    },
+    {
+        "id": "a62eee18.2b74f",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-551201/temp",
+        "topic": "smartys-551201/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "15c0520.02f4aae",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 5",
+        "topic": "node/smartys-temp:894047/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "42a2adcc.5d8844"
+            ]
+        ]
+    },
+    {
+        "id": "42a2adcc.5d8844",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-894047/temp",
+        "topic": "smartys-894047/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "fa136f73.e1b92",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "BrainBloC Temp 6",
+        "topic": "node/smartys-temp:769692/thermometer/0:0/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "7fe8f78f.32e9a8"
+            ]
+        ]
+    },
+    {
+        "id": "7fe8f78f.32e9a8",
+        "type": "mqtt out",
+        "z": "dff833c3.cc87",
+        "name": "smartys-769692/temp",
+        "topic": "smartys-769692/temp",
+        "qos": "0",
+        "retain": "true",
+        "broker": "2a88985b.678248",
+        "x": 390,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "8e93a405.cdf438",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt Green",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 850,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7a912216.25f5cc",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltOrange",
+        "topic": "node/smartys-temp:orange/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "c39e983a.acb558"
+            ]
+        ]
+    },
+    {
+        "id": "c39e983a.acb558",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt Orange",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 850,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "dc94d34c.33257",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBlue",
+        "topic": "node/smartys-temp:blue/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 220,
+        "wires": [
+            [
+                "ca04a76a.162788"
+            ]
+        ]
+    },
+    {
+        "id": "ca04a76a.162788",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt Blue",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b9afb75e.c5e048",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT1",
+        "topic": "node/smartys-temp:883391/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "6138f225.c67edc"
+            ]
+        ]
+    },
+    {
+        "id": "6138f225.c67edc",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT1",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ba7fc002.1035d",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "Volt PushButton 0",
+        "topic": "node/push-button:0/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 650,
+        "y": 720,
+        "wires": [
+            [
+                "1191dfe4.b2216"
+            ]
+        ]
+    },
+    {
+        "id": "1191dfe4.b2216",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt PushButton 0",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 870,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "5f79a473.5df0ec",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT2",
+        "topic": "node/smartys-temp:665181/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "20d85b2c.c67394"
+            ]
+        ]
+    },
+    {
+        "id": "20d85b2c.c67394",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT2",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e67a3b33.d17d28",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT3",
+        "topic": "node/smartys-temp:595536/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "f2250669.1be528"
+            ]
+        ]
+    },
+    {
+        "id": "f2250669.1be528",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT3",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b6847b46.001398",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT4",
+        "topic": "node/smartys-temp:551201/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 500,
+        "wires": [
+            [
+                "e40b8d41.71989"
+            ]
+        ]
+    },
+    {
+        "id": "e40b8d41.71989",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT4",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "742eee4d.ce337",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT5",
+        "topic": "node/smartys-temp:894047/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 560,
+        "wires": [
+            [
+                "17dd9510.d99e7b"
+            ]
+        ]
+    },
+    {
+        "id": "17dd9510.d99e7b",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT5",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2dc2189d.34e228",
+        "type": "mqtt in",
+        "z": "dff833c3.cc87",
+        "name": "VoltBBT6",
+        "topic": "node/smartys-temp:769692/battery/-/voltage",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "29fba84a.b2af58",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "a531a61.8ec2c58"
+            ]
+        ]
+    },
+    {
+        "id": "a531a61.8ec2c58",
+        "type": "ui_gauge",
+        "z": "dff833c3.cc87",
+        "name": "",
+        "group": "57ff470b.93fdf8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Volt BBT6",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 840,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "29fba84a.b2af58",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "2a88985b.678248",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Blokko2 (Mosquitto.org)",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "57ff470b.93fdf8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Default",
+        "tab": "11207769.c31889",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "11207769.c31889",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]

@@ -1,0 +1,124 @@
+{
+    "version": "2.0.0",
+    "command": "make",
+    "args": [],
+    "presentation" : { "reveal": "always" },
+    "echoCommand": true,
+    "suppresslabel": true,
+    "tasks": [
+        {
+            "label": "build",
+            "args": ["-j4"],
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceRoot}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build debug",
+            "args": ["-j4", "debug"],
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["relative", "${workspaceRoot}"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": "build"
+        },
+        {
+            "label": "dfu",
+            "type": "shell",
+            "args": ["dfu"]
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "bcf",
+
+            // Interactive serial port selection with focus to the console
+            "args": ["flash"],
+            "presentation": {"focus": true},
+
+            // Windows - Flash to the selected serial port
+            //"args": ["flash", "--device", "COM1"],
+
+            // Linux - Flash to the selected serial port
+            //"args": ["flash", "--device", "/dev/ttyUSB0"],
+
+            "problemMatcher": []
+        },
+        {
+            "label": "flash+log",
+            "type": "shell",
+            "command": "bcf",
+
+            // Interactive serial port selection with focus to the console
+            "args": ["flash", "--log"],
+            "presentation": {"focus": true},
+
+            // Windows - Flash to the selected serial port
+            //"args": ["flash", "--device", "COM1", "--log"],
+
+            // Linux - Flash to the selected serial port
+            //"args": ["flash", "--device", "/dev/ttyUSB0", "--log"],
+
+            "problemMatcher": []
+        },
+        {
+            // This task supports the typical development workflow:
+            //   1. Build a debug version of the firmware
+            //   2. Flash the firmware onto a device (without verification)
+            //   3. Attach to the device's log
+            //
+            // To run the task repeatedly, simply select "Restart Running Task"
+            // from VSCode's command pallete.
+
+            "label": "build+flash+log",
+            "type": "shell",
+            "command": "bcf",
+
+            "args": ["flash", "--skip-verify", "--log"],
+            "presentation": {"focus": true},
+            "problemMatcher": [],
+            "dependsOrder": "sequence",
+            "dependsOn": ["build debug"]
+        },
+        {
+            "label": "ozone",
+            "type": "shell",
+            "args": ["ozone"]
+        },
+        {
+            "label": "update",
+            "type": "shell",
+            "args": ["update"]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "args": ["clean"]
+        }
+    ]
+}
