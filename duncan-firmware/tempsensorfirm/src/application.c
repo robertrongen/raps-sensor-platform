@@ -49,14 +49,16 @@ uint64_t _radio_id;
 
 int updateSchedule = 1000;
 
-bool changesdone = false;
 bool update_done = false;
-bool done_once = false;
+bool new_update = false;
+bool first_update_done = false;
 
 void twr_get_config(uint64_t *id, const char *topic, void *value, void *param);
 
 static const twr_radio_sub_t subs[] = {
-    {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}};
+    {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
+    //{"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
+    };
 
 void twr_get_config(uint64_t *id, const char *topic, void *value, void *param)
 {
@@ -64,15 +66,15 @@ void twr_get_config(uint64_t *id, const char *topic, void *value, void *param)
 
     twr_log_debug("config recieved!");
 
-    char *array[14]; //array with all settings
+    char *array[14]; // array with all settings
     int i = 0;
-    char *p = strtok(value, "/"); // change / to whatever you use to split the values
+    char *p = strtok(value, ","); // change / to whatever you use to split the values
 
     while (p != NULL) // assign values to array
     {
         twr_log_debug(p);
         array[i++] = p;
-        p = strtok(NULL, "/");
+        p = strtok(NULL, ",");
     }
     settings.SERVICE_INTERVAL_INTERVAL = array[0];
     settings.BATTERY_UPDATE_INTERVAL = array[1];
@@ -90,7 +92,7 @@ void twr_get_config(uint64_t *id, const char *topic, void *value, void *param)
     settings.BAROMETER_TAG_PUB_VALUE_CHANGE = array[13];
 
     update_done = true;
-    done_once = false;
+    new_update = false;
 
     twr_log_info("config loaded. executing main methods");
 }
@@ -200,13 +202,14 @@ void application_task(void)
             twr_log_debug("register with ID %s", id);
             twr_radio_pairing_request(id, 1);
         }
+        twr_scheduler_plan_current_from_now(updateSchedule);
+        return;
     }
-    if (_radio_id != 0)
+    if (update_done && !new_update)
     {
-        if (update_done && !done_once)
+        if (!first_update_done)
         {
             twr_log_debug("doing once started");
-            // twr_module_climate_init();
             twr_module_climate_init();
             twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
             twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_SERVICE_INTERVAL);
@@ -216,13 +219,23 @@ void application_task(void)
 
             twr_module_climate_set_event_handler(climate_module_event_handler, NULL);
             twr_tmp112_set_event_handler(&tmp112, TWR_I2C_I2C0, 0x49);
-            done_once = true;
+            first_update_done = true;
         }
-        static int counter = 0;
-
-        // Log task run and increment counter
-        twr_log_debug("APP: Task run (count: %d)", ++counter);
+        else
+        {
+            twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
+            twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_SERVICE_INTERVAL);
+            twr_module_climate_set_update_interval_lux_meter(settings.UPDATE_SERVICE_INTERVAL);
+            twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
+            twr_module_climate_measure_all_sensors();
+        }
+        new_update = true;
     }
+    static int counter = 0;
+
+    // Log task run and increment counter
+    twr_log_debug("APP: Task run (count: %d)", ++counter);
+
     // Plan next run of this task in 1000 ms
     twr_scheduler_plan_current_from_now(updateSchedule);
 }
