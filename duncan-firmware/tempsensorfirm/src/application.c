@@ -31,7 +31,7 @@ bool first_update_done = false;
 void twr_get_config(uint64_t *id, const char *topic, void *value, void *param);
 
 static const twr_radio_sub_t subs[] = {
-    {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
+    {"raps/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
     // {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
     };
 
