@@ -209,6 +209,7 @@ void application_task(void)
     {
         if (!first_update_done)
         {
+            //set event handlers and settings
             twr_log_debug("doing once started");
             twr_module_climate_init();
             twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
@@ -223,6 +224,7 @@ void application_task(void)
         }
         else
         {
+            //reset updated settings
             twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
             twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_SERVICE_INTERVAL);
             twr_module_climate_set_update_interval_lux_meter(settings.UPDATE_SERVICE_INTERVAL);

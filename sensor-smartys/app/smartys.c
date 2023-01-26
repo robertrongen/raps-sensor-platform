@@ -25,7 +25,6 @@ struct {
     event_param_t humidity;
     event_param_t illuminance;
     event_param_t pressure;
-
 } params;
 
 // LED instance
