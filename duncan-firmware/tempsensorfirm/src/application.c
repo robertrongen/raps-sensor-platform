@@ -58,16 +58,20 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     }
 
 
-   settings.SERVICE_INTERVAL_INTERVAL = array[0];
-   settings.BATTERY_UPDATE_INTERVAL = array[1];
-   settings.UPDATE_SERVICE_INTERVAL = array[2];    
-   settings.UPDATE_NORMAL_INTERVAL = array[3];
-   settings.BAROMETER_UPDATE_SERVICE_INTERVAL = array[4];
-   settings.BAROMETER_UPDATE_NORMAL_INTERVAL = array[5];
-   settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = array[6];
-   settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = array[7];
-   settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = array[8];
-   settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = array[9];
+    settings.SERVICE_INTERVAL_INTERVAL = array[0];
+    settings.BATTERY_UPDATE_INTERVAL = array[1];
+    settings.UPDATE_SERVICE_INTERVAL = array[2];    
+    settings.UPDATE_NORMAL_INTERVAL = array[3];
+    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = array[4];
+    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = array[5];
+    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = array[6];
+    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = array[7];
+    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = array[8];
+    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = array[9];
+    // settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL = array[10]; //
+    // settings.LUX_METER_TAG_PUB_VALUE_CHANGE = array[11];
+    // settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = array[12]; //
+    // settings.BAROMETER_TAG_PUB_VALUE_CHANGE = array[13];
 
     update1_recieved = true;
 
