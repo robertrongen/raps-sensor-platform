@@ -3,6 +3,7 @@
 // Forum https://forum.hardwario.com/
 
 #include <application.h>
+// #include <EEPROM.h> not standard installed
 
 all_settings_t settings;
 
@@ -38,13 +39,13 @@ static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
     {"raps/-/get/update", TWR_RADIO_SUB_PT_STRING, twr_update, NULL},
     // {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
-    };
+};
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
 {
     (void)param;
 
-    twr_log_debug("config recieved!");
+    twr_log_debug("config1 recieved!");
 
     char *array[14]; // array with all settings
     int i = 0;
@@ -56,18 +57,18 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
         array[i++] = p;
         p = strtok(NULL, ",");
     }
+    twr_log_info(array);
 
-
-   settings.SERVICE_INTERVAL_INTERVAL = array[0];
-   settings.BATTERY_UPDATE_INTERVAL = array[1];
-   settings.UPDATE_SERVICE_INTERVAL = array[2];    
-   settings.UPDATE_NORMAL_INTERVAL = array[3];
-   settings.BAROMETER_UPDATE_SERVICE_INTERVAL = array[4];
-   settings.BAROMETER_UPDATE_NORMAL_INTERVAL = array[5];
-   settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = array[6];
-   settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = array[7];
-   settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = array[8];
-   settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = array[9];
+    settings.SERVICE_INTERVAL_INTERVAL = ((int)array[0] * 1000 * 60);
+    settings.BATTERY_UPDATE_INTERVAL = ((int)array[1] * 1000 * 60);
+    settings.UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000);
+    settings.UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000);
+    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = ((int)array[4] * 1000 * 60);
+    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = ((int)array[5] * 1000 * 60);
+    settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = ((int)array[6] * 1000 * 60);
+    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = ((int)array[7] * 1000 * 60);
+    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = ((int)array[8] * 1000 * 60);
+    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = ((int)array[9] * 1000 * 60);
 
     update1_recieved = true;
 
@@ -78,7 +79,7 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
 {
     (void)param;
 
-    twr_log_debug("config recieved!");
+    twr_log_debug("config2 recieved!");
 
     char *array[14]; // array with all settings
     int i = 0;
@@ -90,17 +91,18 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
         array[i++] = p;
         p = strtok(NULL, ",");
     }
+    twr_log_info(array);
 
-   settings.LUX_METER_UPDATE_SERVICE_INTERVAL = array[0];
-   settings.LUX_METER_UPDATE_NORMAL_INTERVAL = array[1];
-   settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = array[2];
-   settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = array[3];
-   settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = array[4];
-   settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = array[5];
-   settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL = array[6];
-   settings.LUX_METER_TAG_PUB_VALUE_CHANGE = array[7];
-   settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = array[8];
-   settings.BAROMETER_TAG_PUB_VALUE_CHANGE = array[9];
+    settings.LUX_METER_UPDATE_SERVICE_INTERVAL = ((int)array[0] * 1000 * 60);
+    settings.LUX_METER_UPDATE_NORMAL_INTERVAL = ((int)array[1] * 1000 * 60);
+    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[2] * 1000 * 60);
+    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = ((int)array[3]);
+    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[4] * 1000 * 60);
+    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = ((int)array[5]);
+    settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[6] * 1000 * 60);
+    settings.LUX_METER_TAG_PUB_VALUE_CHANGE = ((int)array[7]);
+    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[8] * 1000 * 60);
+    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = ((int)array[9]);
 
     update2_recieved = true;
 
@@ -127,14 +129,13 @@ void twr_update(uint64_t *id, const char *topic, void *value, void *param)
     // NOT YET IMPLEMENTED UPDATE
     // ID met value sturen?
 
-
     new_update_configured = true;
     twr_log_info("config loaded. executing main methods");
 }
 
 void battery_event_handler(twr_module_battery_event_t event, void *event_param)
 {
-    (void) event_param;
+    (void)event_param;
 
     float voltage;
 
@@ -215,37 +216,32 @@ void climate_module_event_handler(twr_module_climate_event_t event, void *event_
     }
 }
 
-void switch_to_normal_mode_task(void *param)
-{
-    twr_module_climate_set_update_interval_thermometer(settings.UPDATE_NORMAL_INTERVAL);
-    twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_NORMAL_INTERVAL);
-    twr_module_climate_set_update_interval_lux_meter(settings.UPDATE_NORMAL_INTERVAL);
-    twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_NORMAL_INTERVAL);
-
-    twr_scheduler_unregister(twr_scheduler_get_current_task_id());
-}
-
 // Application initialization function which is called once after boot
 void application_init(void)
 {
     // Initialize logging
     twr_log_init(TWR_LOG_LEVEL_DUMP, TWR_LOG_TIMESTAMP_ABS);
 
-    // 
-    settings.SERVICE_INTERVAL_INTERVAL              = (60 * 60 * 1000);
-    settings.BATTERY_UPDATE_INTERVAL                = (60 * 60 * 1000);
-    settings.UPDATE_SERVICE_INTERVAL                = (5 * 1000);
-    settings.UPDATE_NORMAL_INTERVAL                 = (10 * 1000);
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL      = (1 * 60 * 1000);
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL       = (5 * 60 * 1000);
-    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = 15 * 60 * 1000;
-    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE       = 0.2f;
-    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL    = (15 * 60 * 1000);
-    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE          = 5.0f;
-    settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL   = (15 * 60 * 1000);
-    settings.LUX_METER_TAG_PUB_VALUE_CHANGE         = 25.0f;
-    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL   = (15 * 60 * 1000);
-    settings.BAROMETER_TAG_PUB_VALUE_CHANGE         = 20.0f;
+    settings.SERVICE_INTERVAL_INTERVAL = (1 * 60 * 1000);
+    settings.BATTERY_UPDATE_INTERVAL = (60 * 60 * 1000);
+    settings.UPDATE_SERVICE_INTERVAL = (5 * 1000);
+    settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
+    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.LUX_METER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.LUX_METER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = 0.2f;
+    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = 5.0f;
+    settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.LUX_METER_TAG_PUB_VALUE_CHANGE = 25.0f;
+    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = 20.0f;
 
     // Initialize LED
     twr_led_init(&led, TWR_GPIO_LED, false, false);
@@ -267,19 +263,13 @@ void application_init(void)
     // Initialize climate module
     twr_module_climate_init();
     twr_module_climate_set_event_handler(climate_module_event_handler, NULL);
-    twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
-    twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_SERVICE_INTERVAL);
-    twr_module_climate_set_update_interval_lux_meter(settings.UPDATE_SERVICE_INTERVAL);
+    twr_module_climate_set_update_interval_thermometer(settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL);
+    twr_module_climate_set_update_interval_hygrometer(settings.HUMIDITY_UPDATE_SERVICE_INTERVAL);
+    twr_module_climate_set_update_interval_lux_meter(settings.LUX_METER_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_measure_all_sensors();
 
-    // Send radio pairing request
-    twr_radio_pub_bool("sensor/start/get/config", true);
-
-    twr_scheduler_register(switch_to_normal_mode_task, NULL, settings.SERVICE_INTERVAL_INTERVAL);
-
     twr_led_pulse(&led, 2000);
-
 }
 
 // Application task function (optional) which is called peridically if scheduled
@@ -297,17 +287,20 @@ void application_task(void)
             twr_log_debug("register with ID %s", id);
             twr_radio_pairing_request(id, "1");
         }
-        twr_scheduler_plan_current_from_now(updateSchedule);
+        twr_scheduler_plan_current_from_now(1000);
         return;
     }
-    if(update1_recieved && update2_recieved || new_update_configured)
+    if (update1_recieved && update2_recieved || new_update_configured)
     {
-            twr_module_climate_set_update_interval_thermometer(settings.UPDATE_SERVICE_INTERVAL);
-            twr_module_climate_set_update_interval_hygrometer(settings.UPDATE_SERVICE_INTERVAL);
-            twr_module_climate_set_update_interval_lux_meter(settings.UPDATE_SERVICE_INTERVAL);
-            twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
-            twr_module_climate_measure_all_sensors();
-            new_update_configured = false;
+        twr_log_info("UPDATE 1 AND 2 RECIEVED AND WILL BE APPLIED");
+        twr_module_climate_set_update_interval_thermometer(settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL);
+        twr_module_climate_set_update_interval_hygrometer(settings.HUMIDITY_UPDATE_SERVICE_INTERVAL);
+        twr_module_climate_set_update_interval_lux_meter(settings.LUX_METER_UPDATE_SERVICE_INTERVAL);
+        twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
+        twr_module_climate_measure_all_sensors();
+        new_update_configured = false;
+        update1_recieved = false;
+        update2_recieved = false;
     }
     static int counter = 0;
 
@@ -315,5 +308,5 @@ void application_task(void)
     twr_log_debug("APP: Task run (count: %d)", ++counter);
 
     // Plan next run of this task in 1000 ms
-    twr_scheduler_plan_current_from_now(updateSchedule);
+    twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
 }
