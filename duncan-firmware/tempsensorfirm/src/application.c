@@ -38,7 +38,6 @@ static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
     {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
     {"raps/-/get/update", TWR_RADIO_SUB_PT_STRING, twr_update, NULL},
-    // {"denurity/-/get/config", TWR_RADIO_SUB_PT_STRING, twr_get_config, NULL}
 };
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
@@ -59,7 +58,6 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     }
     twr_log_info(array);
 
-<<<<<<< HEAD
     settings.SERVICE_INTERVAL_INTERVAL = ((int)array[0] * 1000 * 60);
     settings.BATTERY_UPDATE_INTERVAL = ((int)array[1] * 1000 * 60);
     settings.UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000);
@@ -70,23 +68,6 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = ((int)array[7] * 1000 * 60);
     settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = ((int)array[8] * 1000 * 60);
     settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = ((int)array[9] * 1000 * 60);
-=======
-
-    settings.SERVICE_INTERVAL_INTERVAL = array[0];
-    settings.BATTERY_UPDATE_INTERVAL = array[1];
-    settings.UPDATE_SERVICE_INTERVAL = array[2];    
-    settings.UPDATE_NORMAL_INTERVAL = array[3];
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = array[4];
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = array[5];
-    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = array[6];
-    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = array[7];
-    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = array[8];
-    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = array[9];
-    // settings.LUX_METER_TAG_PUB_NO_CHANGE_INTERVAL = array[10]; //
-    // settings.LUX_METER_TAG_PUB_VALUE_CHANGE = array[11];
-    // settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = array[12]; //
-    // settings.BAROMETER_TAG_PUB_VALUE_CHANGE = array[13];
->>>>>>> a0dd1673e84765e2c6a5f5598c226a61e9c0359e
 
     update1_recieved = true;
 
@@ -190,7 +171,7 @@ void climate_module_event_handler(twr_module_climate_event_t event, void *event_
         {
             if ((fabs(value - params.humidity.value) >= settings.HUMIDITY_TAG_PUB_VALUE_CHANGE) || (params.humidity.next_pub < twr_scheduler_get_spin_tick()))
             {
-                twr_radio_pub_humidity(TWR_RADIO_PUB_CHANNEL_R3_I2C0_ADDRESS_DEFAULT, &value);
+                twr_radio_pub_humidity(TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &value);
                 params.humidity.value = value;
                 params.humidity.next_pub = twr_scheduler_get_spin_tick() + settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL;
             }
