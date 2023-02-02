@@ -63,7 +63,7 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     settings.UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000);
     settings.BAROMETER_UPDATE_SERVICE_INTERVAL = ((int)array[4] * 1000 * 60);
     settings.BAROMETER_UPDATE_NORMAL_INTERVAL = ((int)array[5] * 1000 * 60);
-    settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = ((int)array[6] * 1000 * 60);
+    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = ((int)array[6] * 1000 * 60);
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = ((int)array[7] * 1000 * 60);
     settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = ((int)array[8] * 1000 * 60);
     settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = ((int)array[9] * 1000 * 60);
@@ -231,7 +231,7 @@ void application_init(void)
     settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
     settings.BAROMETER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
     settings.BAROMETER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
     settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
     settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
@@ -266,7 +266,7 @@ void application_init(void)
     // Initialize climate module
     twr_module_climate_init();
     twr_module_climate_set_event_handler(climate_module_event_handler, NULL);
-    twr_module_climate_set_update_interval_thermometer(settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL);
+    twr_module_climate_set_update_interval_thermometer(settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_set_update_interval_hygrometer(settings.HUMIDITY_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_set_update_interval_lux_meter(settings.LUX_METER_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
@@ -297,7 +297,7 @@ void application_task(void)
     if (update1_recieved && update2_recieved || new_update_configured)
     {
         twr_log_info("UPDATE 1 AND 2 RECIEVED AND WILL BE APPLIED");
-        twr_module_climate_set_update_interval_thermometer(settings.TEMPRRATURE_UPDATE_SERVICE_INTERVAL);
+        twr_module_climate_set_update_interval_thermometer(settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL);
         twr_module_climate_set_update_interval_hygrometer(settings.HUMIDITY_UPDATE_SERVICE_INTERVAL);
         twr_module_climate_set_update_interval_lux_meter(settings.LUX_METER_UPDATE_SERVICE_INTERVAL);
         twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
