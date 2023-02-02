@@ -3,7 +3,6 @@
 // Forum https://forum.hardwario.com/
 
 #include <application.h>
-// #include <EEPROM.h> not standard installed
 
 all_settings_t settings;
 
@@ -215,6 +214,11 @@ void climate_module_event_handler(twr_module_climate_event_t event, void *event_
     }
 }
 
+void write_eeprom(void)
+{
+
+}
+
 // Application initialization function which is called once after boot
 void application_init(void)
 {
@@ -274,6 +278,7 @@ void application_init(void)
 // Application task function (optional) which is called peridically if scheduled
 void application_task(void)
 {
+    twr_log_info((int){twr_eeprom_get_size()});
     if (_radio_id == 0)
     {
         _radio_id = twr_radio_get_my_id();
