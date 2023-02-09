@@ -1,0 +1,3 @@
+[submodule "Python_NodeRed_Changer"]
+	path = Python_NodeRed_Changer
+	url = https://github.com/2nowabout/Node-Red_JSON_Generator
