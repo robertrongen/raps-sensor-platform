@@ -36,7 +36,6 @@ void twr_update(uint64_t *id, const char *topic, void *value, void *param);
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
     {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
-    {"raps/-/get/update", TWR_RADIO_SUB_PT_STRING, twr_update, NULL},
 };
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
@@ -104,30 +103,6 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
 
     update2_recieved = true;
 
-    twr_log_info("config loaded. executing main methods");
-}
-
-void twr_update(uint64_t *id, const char *topic, void *value, void *param)
-{
-    (void)param;
-
-    twr_log_debug("config update recieved!");
-
-    char *array[14]; // array with updated settings
-    int i = 0;
-    char *p = strtok(value, ","); // change / to whatever you use to split the values
-
-    while (p != NULL) // assign values to array
-    {
-        twr_log_debug(p);
-        array[i++] = p;
-        p = strtok(NULL, ",");
-    }
-
-    // NOT YET IMPLEMENTED UPDATE
-    // ID met value sturen?
-
-    new_update_configured = true;
     twr_log_info("config loaded. executing main methods");
 }
 
@@ -278,7 +253,6 @@ void application_init(void)
 // Application task function (optional) which is called peridically if scheduled
 void application_task(void)
 {
-    twr_log_info((char){twr_eeprom_get_size()});
     if (_radio_id == 0)
     {
         _radio_id = twr_radio_get_my_id();
