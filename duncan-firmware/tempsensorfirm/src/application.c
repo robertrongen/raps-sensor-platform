@@ -278,7 +278,7 @@ void application_init(void)
 // Application task function (optional) which is called peridically if scheduled
 void application_task(void)
 {
-    twr_log_info((int){twr_eeprom_get_size()});
+    twr_log_info((char){twr_eeprom_get_size()});
     if (_radio_id == 0)
     {
         _radio_id = twr_radio_get_my_id();
@@ -312,5 +312,6 @@ void application_task(void)
     twr_log_debug("APP: Task run (count: %d)", ++counter);
 
     // Plan next run of this task in 1000 ms
-    twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
+    //twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
+    twr_scheduler_plan_current_from_now(1000);
 }
