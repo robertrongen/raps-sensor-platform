@@ -287,5 +287,5 @@ void application_task(void)
 
     // Plan next run of this task in 1000 ms
     //twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
-    twr_scheduler_plan_current_from_now(1000);
+    twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
 }
