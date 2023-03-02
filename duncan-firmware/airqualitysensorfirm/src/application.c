@@ -159,7 +159,7 @@ void voc_event_handler(void *event_param)
         {
             if (params.voc.next_pub < twr_scheduler_get_spin_tick() || ((value == 0) && (params.voc.value != 0)) || ((value > 1) && (params.voc.value == 0)))
             {
-                twr_radio_pub_luminosity(TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &value);
+                twr_radio_pub_string("VOC_LP", &value);
                 params.voc.value = value;
                 params.voc.next_pub = twr_scheduler_get_spin_tick() + (15 * 60 * 1000);
             }
@@ -174,11 +174,6 @@ void barometer_event_handler(void *event_param)
             if ((fabs(value - params.pressure.value) >= settings.BAROMETER_TAG_PUB_VALUE_CHANGE) || (params.pressure.next_pub < twr_scheduler_get_spin_tick()))
             {
                 float meter;
-
-                if (!twr_module_climate_get_altitude_meter(&meter))
-                {
-                    return;
-                }
 
                 twr_radio_pub_barometer(TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &value, &meter);
                 params.pressure.value = value;
