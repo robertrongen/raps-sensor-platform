@@ -154,7 +154,7 @@ void humidity_event_handler(void *event_param)
 
 void voc_event_handler(void *event_param)
 {
-    float value;
+    uint16_t value;
     if (twr_tag_voc_lp_get_tvoc_ppb(&tag_voc_lp, &value))
         {
             if (params.voc.next_pub < twr_scheduler_get_spin_tick() || ((value == 0) && (params.voc.value != 0)) || ((value > 1) && (params.voc.value == 0)))
