@@ -4,15 +4,58 @@
 
 #include <application.h>
 
+#define MAX_PAGE_INDEX 3
+
+#define PAGE_INDEX_MENU -1
+
 all_settings_t settings;
 
-struct
+static struct
 {
-    event_param_t co2;
-    event_param_t voc;
-    event_param_t humidity;
-    event_param_t pressure;
-} params;
+    float_t temperature;
+    float_t humidity;
+    float_t tvoc;
+    float_t pressure;
+    float_t altitude;
+    float_t co2_concentation;
+    float_t battery_voltage;
+    float_t battery_pct;
+
+} values;
+
+static const struct
+{
+    char *name0;
+    char *format0;
+    float_t *value0;
+    char *unit0;
+    char *name1;
+    char *format1;
+    float_t *value1;
+    char *unit1;
+
+} pages[] = {
+    {"Temperature   ", "%.1f", &values.temperature, "\xb0" "C",
+     "Humidity      ", "%.1f", &values.humidity, "%"},
+    {"CO2           ", "%.0f", &values.co2_concentation, "ppm",
+     "TVOC          ", "%.1f", &values.tvoc, "ppb"},
+    {"Pressure      ", "%.0f", &values.pressure, "hPa",
+     "Altitude      ", "%.1f", &values.altitude, "m"},
+    {"Battery       ", "%.2f", &values.battery_voltage, "V",
+     "Battery       ", "%.0f", &values.battery_pct, "%"},
+};
+
+static int page_index = 0;
+static int menu_item = 0;
+
+static struct
+{
+    twr_tick_t next_update;
+    bool mqtt;
+
+} lcd;
+
+twr_led_t led_lcd_green;
 
 // LED instance
 twr_led_t led;
@@ -26,8 +69,6 @@ twr_tag_voc_lp_t tag_voc_lp;
 
 uint64_t _radio_id;
 
-int updateSchedule = 1000;
-
 bool update1_recieved = false;
 bool update2_recieved = false;
 bool new_update_configured = false;
@@ -35,7 +76,15 @@ bool first_update_done = false;
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param);
 void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param);
-void twr_update(uint64_t *id, const char *topic, void *value, void *param);
+
+static void lcd_page_render();
+
+void lcd_event_handler(twr_module_lcd_event_t event, void *event_param);
+void tmp112_event_handler(twr_tmp112_t *self, twr_tmp112_event_t event, void *event_param);
+void humidity_tag_event_handler(twr_tag_humidity_t *self, twr_tag_humidity_event_t event, void *event_param);
+void barometer_tag_event_handler(twr_tag_barometer_t *self, twr_tag_barometer_event_t event, void *event_param);
+void co2_event_handler(twr_module_co2_event_t event, void *event_param);
+void voc_lp_tag_event_handler(twr_tag_voc_lp_t *self, twr_tag_voc_lp_event_t event, void *event_param);
 
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
@@ -109,77 +158,271 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
     twr_log_info("config loaded. executing main methods");
 }
 
-void battery_event_handler(twr_module_battery_event_t event, void *event_param)
+static void lcd_page_render()
 {
-    (void)event_param;
+    int w;
+    char str[32];
 
-    float voltage;
+    twr_system_pll_enable();
 
-    if (event == TWR_MODULE_BATTERY_EVENT_UPDATE)
+    twr_module_lcd_clear();
+
+    if ((page_index <= MAX_PAGE_INDEX) && (page_index != PAGE_INDEX_MENU))
     {
-        if (twr_module_battery_get_voltage(&voltage))
+        twr_module_lcd_set_font(&twr_font_ubuntu_15);
+        twr_module_lcd_draw_string(10, 5, pages[page_index].name0, true);
+
+        twr_module_lcd_set_font(&twr_font_ubuntu_28);
+        snprintf(str, sizeof(str), pages[page_index].format0, *pages[page_index].value0);
+        w = twr_module_lcd_draw_string(25, 25, str, true);
+        twr_module_lcd_set_font(&twr_font_ubuntu_15);
+        w = twr_module_lcd_draw_string(w, 35, pages[page_index].unit0, true);
+
+        twr_module_lcd_set_font(&twr_font_ubuntu_15);
+        twr_module_lcd_draw_string(10, 55, pages[page_index].name1, true);
+
+        twr_module_lcd_set_font(&twr_font_ubuntu_28);
+        snprintf(str, sizeof(str), pages[page_index].format1, *pages[page_index].value1);
+        w = twr_module_lcd_draw_string(25, 75, str, true);
+        twr_module_lcd_set_font(&twr_font_ubuntu_15);
+        twr_module_lcd_draw_string(w, 85, pages[page_index].unit1, true);
+    }
+
+    snprintf(str, sizeof(str), "%d/%d", page_index + 1, MAX_PAGE_INDEX + 1);
+    twr_module_lcd_set_font(&twr_font_ubuntu_13);
+    twr_module_lcd_draw_string(55, 115, str, true);
+
+    twr_system_pll_disable();
+}
+
+void lcd_event_handler(twr_module_lcd_event_t event, void *event_param)
+{
+    (void) event_param;
+
+    if (event == TWR_MODULE_LCD_EVENT_LEFT_CLICK)
+    {
+        if ((page_index != PAGE_INDEX_MENU))
         {
-            twr_radio_pub_battery(&voltage);
+            // Key previous page
+            page_index--;
+            if (page_index < 0)
+            {
+                page_index = MAX_PAGE_INDEX;
+                menu_item = 0;
+            }
+        }
+        else
+        {
+            // Key menu down
+            menu_item++;
+            if (menu_item > 4)
+            {
+                menu_item = 0;
+            }
+        }
+
+        static uint16_t left_event_count = 0;
+        left_event_count++;
+        //twr_radio_pub_event_count(TWR_RADIO_PUB_EVENT_LCD_BUTTON_LEFT, &left_event_count);
+    }
+    else if(event == TWR_MODULE_LCD_EVENT_RIGHT_CLICK)
+    {
+        if ((page_index != PAGE_INDEX_MENU) || (menu_item == 0))
+        {
+            // Key next page
+            page_index++;
+            if (page_index > MAX_PAGE_INDEX)
+            {
+                page_index = 0;
+            }
+            if (page_index == PAGE_INDEX_MENU)
+            {
+                menu_item = 0;
+            }
+        }
+
+        static uint16_t right_event_count = 0;
+        right_event_count++;
+        //twr_radio_pub_event_count(TWR_RADIO_PUB_EVENT_LCD_BUTTON_RIGHT, &right_event_count);
+    }
+    else if(event == TWR_MODULE_LCD_EVENT_LEFT_HOLD)
+    {
+        static int left_hold_event_count = 0;
+        left_hold_event_count++;
+        twr_radio_pub_int("push-button/lcd:left-hold/event-count", &left_hold_event_count);
+
+        twr_led_pulse(&led_lcd_green, 100);
+    }
+    else if(event == TWR_MODULE_LCD_EVENT_RIGHT_HOLD)
+    {
+        static int right_hold_event_count = 0;
+        right_hold_event_count++;
+        twr_radio_pub_int("push-button/lcd:right-hold/event-count", &right_hold_event_count);
+
+        twr_led_pulse(&led_lcd_green, 100);
+
+    }
+    else if(event == TWR_MODULE_LCD_EVENT_BOTH_HOLD)
+    {
+        static int both_hold_event_count = 0;
+        both_hold_event_count++;
+        twr_radio_pub_int("push-button/lcd:both-hold/event-count", &both_hold_event_count);
+
+        twr_led_pulse(&led_lcd_green, 100);
+    }
+
+    twr_scheduler_plan_now(0);
+}
+
+
+void voc_lp_tag_event_handler(twr_tag_voc_lp_t *self, twr_tag_voc_lp_event_t event, void *event_param)
+{
+    event_param_t *param = (event_param_t *)event_param;
+
+    if (event == TWR_TAG_VOC_LP_EVENT_UPDATE)
+    {
+        uint16_t value;
+
+        if (twr_tag_voc_lp_get_tvoc_ppb(self, &value))
+        {
+            if ((fabsf(value - param->value) >= 5.0f) || (param->next_pub < twr_scheduler_get_spin_tick()))
+            {
+                param->value = value;
+                param->next_pub = twr_scheduler_get_spin_tick() + (15 * 60 * 1000);
+
+                int radio_tvoc = value;
+
+                values.tvoc = radio_tvoc;
+
+                twr_radio_pub_int("voc-lp-sensor/0:0/tvoc", &radio_tvoc);
+                twr_scheduler_plan_now(0);
+
+            }
         }
     }
 }
 
-void co2_event_handler(void *event_param)
+void tmp112_event_handler(twr_tmp112_t *self, twr_tmp112_event_t event, void *event_param)
 {
     float value;
-    if (twr_module_co2_get_concentration_ppm(&value))
+    event_param_t *param = (event_param_t *)event_param;
+
+    if (event != TWR_TMP112_EVENT_UPDATE)
+    {
+        return;
+    }
+
+    if (twr_tmp112_get_temperature_celsius(self, &value))
+    {
+        if ((fabs(value - param->value) >= settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE) || (param->next_pub < twr_scheduler_get_spin_tick()))
         {
-            if (params.co2.next_pub < twr_scheduler_get_spin_tick())
+            twr_radio_pub_temperature(param->channel, &value);
+            param->value = value;
+            param->next_pub = twr_scheduler_get_spin_tick() + settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL;
+
+            values.temperature = value;
+            twr_scheduler_plan_now(0);
+        }
+    }
+}
+
+void humidity_tag_event_handler(twr_tag_humidity_t *self, twr_tag_humidity_event_t event, void *event_param)
+{
+    float value;
+    event_param_t *param = (event_param_t *)event_param;
+    twr_log_debug("running hum");
+    if (twr_tag_humidity_get_humidity_percentage(self, &value))
+    {
+        if ((fabs(value - param->value) >= settings.HUMIDITY_TAG_PUB_VALUE_CHANGE) || (param->next_pub < twr_scheduler_get_spin_tick()))
+        {
+            twr_radio_pub_humidity(param->channel, &value);
+            param->value = value;
+            param->next_pub = twr_scheduler_get_spin_tick() + settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL;
+
+            values.humidity = value;
+            twr_scheduler_plan_now(0);
+        }
+    }
+}
+
+void barometer_tag_event_handler(twr_tag_barometer_t *self, twr_tag_barometer_event_t event, void *event_param)
+{
+    float pascal;
+    float meter;
+    event_param_t *param = (event_param_t *)event_param;
+
+    if (event != TWR_TAG_BAROMETER_EVENT_UPDATE)
+    {
+        return;
+    }
+
+    if (!twr_tag_barometer_get_pressure_pascal(self, &pascal))
+    {
+        return;
+    }
+
+    if ((fabs(pascal - param->value) >= settings.BAROMETER_TAG_PUB_VALUE_CHANGE) || (param->next_pub < twr_scheduler_get_spin_tick()))
+    {
+
+        if (!twr_tag_barometer_get_altitude_meter(self, &meter))
+        {
+            return;
+        }
+
+        twr_radio_pub_barometer(param->channel, &pascal, &meter);
+        param->value = pascal;
+        param->next_pub = twr_scheduler_get_spin_tick() + settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL;
+
+        values.pressure = pascal / 100.0;
+        values.altitude = meter;
+        twr_scheduler_plan_now(0);
+    }
+}
+
+void co2_event_handler(twr_module_co2_event_t event, void *event_param)
+{
+    event_param_t *param = (event_param_t *) event_param;
+    float value;
+
+    if (event == TWR_MODULE_CO2_EVENT_UPDATE)
+    {
+        if (twr_module_co2_get_concentration_ppm(&value))
+        {
+            if ((fabs(value - param->value) >= 50.f) || (param->next_pub < twr_scheduler_get_spin_tick()))
             {
                 twr_radio_pub_co2(&value);
-                params.co2.value = value;
-                params.co2.next_pub = twr_scheduler_get_spin_tick() + (15 * 60 * 1000);
+                param->value = value;
+                param->next_pub = twr_scheduler_get_spin_tick() + settings.CO2_UPDATE_SERVICE_INTERVAL;
+
+                values.co2_concentation = value;
+                twr_scheduler_plan_now(0);
             }
         }
+    }
 }
 
-void humidity_event_handler(void *event_param)
+void battery_event_handler(twr_module_battery_event_t event, void *event_param)
 {
-    float value;
-    if (twr_tag_humidity_get_humidity_percentage(&tag_humidity, &value))
-        {
-            if ((fabs(value - params.humidity.value) >= settings.HUMIDITY_TAG_PUB_VALUE_CHANGE) || (params.humidity.next_pub < twr_scheduler_get_spin_tick()))
-            {
-                twr_radio_pub_humidity(TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &value);
-                params.humidity.value = value;
-                params.humidity.next_pub = twr_scheduler_get_spin_tick() + settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL;
-            }
-        }
-}
+    (void) event;
+    (void) event_param;
 
-void voc_event_handler(void *event_param)
-{
-    uint16_t value;
-    if (twr_tag_voc_lp_get_tvoc_ppb(&tag_voc_lp, &value))
-        {
-            if (params.voc.next_pub < twr_scheduler_get_spin_tick() || ((value == 0) && (params.voc.value != 0)) || ((value > 1) && (params.voc.value == 0)))
-            {
-                twr_radio_pub_string("VOC_LP", &value);
-                params.voc.value = value;
-                params.voc.next_pub = twr_scheduler_get_spin_tick() + (15 * 60 * 1000);
-            }
-        }
-}
+    float voltage;
+    int percentage;
 
-void barometer_event_handler(void *event_param)
-{
-    float value;
-    if (twr_tag_barometer_get_pressure_pascal(&tag_barometer, &value))
+    if(event == TWR_MODULE_BATTERY_EVENT_UPDATE)
+    {
+        if (twr_module_battery_get_voltage(&voltage))
         {
-            if ((fabs(value - params.pressure.value) >= settings.BAROMETER_TAG_PUB_VALUE_CHANGE) || (params.pressure.next_pub < twr_scheduler_get_spin_tick()))
-            {
-                float meter;
 
-                twr_radio_pub_barometer(TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_DEFAULT, &value, &meter);
-                params.pressure.value = value;
-                params.pressure.next_pub = twr_scheduler_get_spin_tick() + settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL;
-            }
+            values.battery_voltage = voltage;
+            twr_radio_pub_battery(&voltage);
         }
+
+        if (twr_module_battery_get_charge_level(&percentage))
+        {
+            values.battery_pct = percentage;
+        }
+    }
 }
 
 void write_eeprom(void)
@@ -237,10 +480,24 @@ void application_init(void)
     twr_tag_voc_lp_init(&tag_voc_lp, TWR_I2C_I2C0);
     twr_module_co2_init();
 
-    twr_tag_barometer_set_event_handler(&tag_barometer, barometer_event_handler, NULL);
-    twr_tag_humidity_set_event_handler(&tag_humidity, humidity_event_handler, NULL);
-    twr_tag_voc_lp_set_event_handler(&tag_voc_lp, voc_event_handler, NULL);
+    static twr_tmp112_t temperature;
+    static event_param_t temperature_event_param = { .next_pub = 0, .channel = TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_ALTERNATE };
+    twr_tmp112_init(&temperature, TWR_I2C_I2C0, 0x49);
+    twr_tmp112_set_event_handler(&temperature, tmp112_event_handler, &temperature_event_param);
+    twr_tmp112_set_update_interval(&temperature, settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL);
+
+    static event_param_t voc_lp_event_param = { .next_pub = 0 };
+    twr_tag_barometer_set_event_handler(&tag_barometer, barometer_tag_event_handler, NULL);
+    twr_tag_humidity_set_event_handler(&tag_humidity, humidity_tag_event_handler, &voc_lp_event_param);
+    twr_tag_voc_lp_set_event_handler(&tag_voc_lp, voc_lp_tag_event_handler, &voc_lp_event_param);
     twr_module_co2_set_event_handler(co2_event_handler, NULL);
+
+    memset(&values, 0xff, sizeof(values));
+    twr_module_lcd_init();
+    twr_module_lcd_set_event_handler(lcd_event_handler, NULL);
+    twr_module_lcd_set_button_hold_time(1000);
+    const twr_led_driver_t* driver = twr_module_lcd_get_led_driver();
+    twr_led_init_virtual(&led_lcd_green, 1, driver, 1);
 
     //TODO FILL THIS WITH SETTINGS
     twr_tag_barometer_set_update_interval(&tag_barometer, settings.BAROMETER_UPDATE_NORMAL_INTERVAL);
@@ -281,6 +538,17 @@ void application_task(void)
         update1_recieved = false;
         update2_recieved = false;
     }
+
+    if (!twr_module_lcd_is_ready())
+    {
+        return;
+    }
+
+    if (!lcd.mqtt)
+    {
+        lcd_page_render();
+    }
+    twr_module_lcd_update();
     static int counter = 0;
 
     // Log task run and increment counter
