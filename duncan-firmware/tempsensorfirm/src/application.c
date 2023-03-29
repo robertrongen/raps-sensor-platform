@@ -247,6 +247,15 @@ void application_init(void)
     twr_module_climate_set_update_interval_barometer(settings.BAROMETER_UPDATE_SERVICE_INTERVAL);
     twr_module_climate_measure_all_sensors();
 
+    size_t eeprom = twr_eeprom_get_size();
+    twr_log_debug("EEPROM size: %d", eeprom);
+    char testWrite[] = "test";
+    //twr_eeprom_write(0, testWrite, sizeof(testWrite));
+    twr_log_debug("size is %d", sizeof(testWrite));
+    char read[7];
+    twr_eeprom_read(0, read, 4);
+    read[4] = '\0';
+    twr_log_debug("Data: %s", read);
     twr_led_pulse(&led, 2000);
 }
 

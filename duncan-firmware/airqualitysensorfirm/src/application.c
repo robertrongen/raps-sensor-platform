@@ -66,6 +66,7 @@ twr_tmp112_t tmp112;
 twr_tag_barometer_t tag_barometer;
 twr_tag_humidity_t tag_humidity;
 twr_tag_voc_lp_t tag_voc_lp;
+twr_tag_nfc_t tag_nfc;
 
 uint64_t _radio_id;
 
@@ -76,6 +77,7 @@ bool first_update_done = false;
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param);
 void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param);
+void twr_set_nfc(uint64_t *id, const char *topic, void *value, void *param);
 
 static void lcd_page_render();
 
@@ -89,6 +91,7 @@ void voc_lp_tag_event_handler(twr_tag_voc_lp_t *self, twr_tag_voc_lp_event_t eve
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
     {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
+    {"raps/-/set/nfc", TWR_RADIO_SUB_PT_STRING, }
 };
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
@@ -156,6 +159,18 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
     update2_recieved = true;
 
     twr_log_info("config loaded. executing main methods");
+}
+
+void twr_set_nfc(uint64_t *id, const char *topic, void *value, void *param)
+{
+    (void) param;
+
+    twr_log_debug(value);
+
+    if(twr_tag_nfc_memory_write(&tag_nfc, value, sizeof(value)))
+    {
+        twr_log_debug("nfc memory written");
+    }
 }
 
 static void lcd_page_render()
@@ -478,6 +493,7 @@ void application_init(void)
     twr_tag_barometer_init(&tag_barometer, TWR_I2C_I2C0);
     twr_tag_humidity_init(&tag_humidity, TWR_TAG_HUMIDITY_REVISION_R2, TWR_I2C_I2C0, TWR_TAG_HUMIDITY_I2C_ADDRESS_DEFAULT);
     twr_tag_voc_lp_init(&tag_voc_lp, TWR_I2C_I2C0);
+    twr_tag_nfc_init(&tag_nfc, TWR_I2C_I2C0, TWR_TAG_NFC_I2C_ADDRESS_DEFAULT);
     twr_module_co2_init();
 
     static twr_tmp112_t temperature;
