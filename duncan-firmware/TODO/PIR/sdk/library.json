@@ -1,0 +1,53 @@
+{
+    "name": "twr-sdk",
+    "version": "1.0.0",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/hardwario/twr-sdk.git"
+    },
+    "authors":
+    [
+      {
+        "name": "HARDWARIO s.r.o.",
+        "email": "info@hardwario.com",
+        "url": "https://hardwario.com",
+        "maintainer": true
+      }
+    ],
+
+    "license": "MIT",
+    "homepage": "https://tower.hardwario.com",
+    "frameworks": "stm32cube",
+    "platforms": "hardwario-tower",
+    "export": {
+        "exclude":[
+            "_examples/*",
+            "doc/*",
+            ".*",
+            "./*.sh"
+        ]
+    },
+    "build": {
+        "includeDir": ".",
+        "srcDir": ".",
+        "srcFilter": [
+            "+<twr/src>",
+            "+<twr/stm/src>",
+            "+<stm/spirit1/src>",
+            "+<stm/usb/src>",
+            "+<lib/jsmn>",
+            "+<lib/minmea>"
+        ],
+        "flags": [
+            "-Itwr/inc",
+            "-Ibcl/inc",
+            "-Itwr/stm/inc",
+            "-Istm/spirit1/inc",
+            "-Istm/usb/inc",
+            "-Ilib/jsmn",
+            "-Ilib/minmea",
+            "-Wl,-u_printf_float"
+        ]
+    }
+}
