@@ -6,6 +6,13 @@
 
 all_settings_t settings;
 
+static struct
+{
+    float_t temperature;
+    float_t battery_voltage;
+    float_t battery_pct;
+} values;
+
 // LED instance
 twr_led_t led;
 
