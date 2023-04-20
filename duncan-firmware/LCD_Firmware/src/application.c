@@ -136,6 +136,7 @@ void application_task(void)
             twr_log_debug("doing once started");
             twr_tmp112_set_event_handler(&tmp112, TWR_I2C_I2C0, 0x49);
             first_update_done = true;
+            twr_radio_pub_bool("settings/are/applied", true)
         }
         else
         {

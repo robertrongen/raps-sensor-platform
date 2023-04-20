@@ -553,6 +553,8 @@ void application_task(void)
         new_update_configured = false;
         update1_recieved = false;
         update2_recieved = false;
+
+        twr_radio_pub_bool("settings/are/applied", true)
     }
 
     if (!twr_module_lcd_is_ready())

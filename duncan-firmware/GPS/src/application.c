@@ -11,6 +11,7 @@ static struct
     float_t temperature;
     float_t battery_voltage;
     float_t battery_pct;
+
 } values;
 
 // LED instance
@@ -29,11 +30,12 @@ bool first_update_done = false;
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param);
 void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param);
 
+
 void tmp112_event_handler(twr_tmp112_t *self, twr_tmp112_event_t event, void *event_param);
 
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
-    {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL}
+    {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
 };
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
@@ -103,6 +105,15 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
     twr_log_info("config loaded. executing main methods");
 }
 
+void twr_gps_event_handler(void *event_param)
+{
+    twr_radio_pub_string("gps/time/status", twr_module_gps_get_time);
+    twr_radio_pub_string("gps/location/status", twr_module_gps_get_position);
+    twr_radio_pub_string("gps/altitude/status", twr_module_gps_get_altitude);
+    twr_radio_pub_string("gps/quality/status", twr_module_gps_get_quality);
+    twr_radio_pub_string("gps/accuracy/status", twr_module_gps_get_accuracy);
+}
+
 void tmp112_event_handler(twr_tmp112_t *self, twr_tmp112_event_t event, void *event_param)
 {
     float value;
@@ -147,9 +158,13 @@ void battery_event_handler(twr_module_battery_event_t event, void *event_param)
         if (twr_module_battery_get_charge_level(&percentage))
         {
             values.battery_pct = percentage;
-            twr_radio_pub_battery(&percentage);
         }
     }
+}
+
+void write_eeprom(void)
+{
+
 }
 
 // Application initialization function which is called once after boot
@@ -162,10 +177,22 @@ void application_init(void)
     settings.BATTERY_UPDATE_INTERVAL = (60 * 60 * 1000);
     settings.UPDATE_SERVICE_INTERVAL = (5 * 1000);
     settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
+    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
     settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
+    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
+    settings.CO2_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
+    settings.CO2_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
+    settings.VOC_LP_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
+    settings.VOC_LP_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
     settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
     settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = 0.2f;
+    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = 5.0f;
+    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
+    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = 20.0f;
 
     // Initialize LED
     twr_led_init(&led, TWR_GPIO_LED, false, false);
@@ -183,6 +210,12 @@ void application_init(void)
     twr_module_battery_init();
     twr_module_battery_set_event_handler(battery_event_handler, NULL);
     twr_module_battery_set_update_interval(settings.BATTERY_UPDATE_INTERVAL);
+
+    // Initialize all components
+    twr_module_gps_init();
+    twr_module_gps_set_event_handler(twr_gps_event_handler, NULL);
+    twr_module_gps_start();
+
 
     static twr_tmp112_t temperature;
     static event_param_t temperature_event_param = { .next_pub = 0, .channel = TWR_RADIO_PUB_CHANNEL_R1_I2C0_ADDRESS_ALTERNATE };
@@ -214,12 +247,13 @@ void application_task(void)
     if (update1_recieved && update2_recieved || new_update_configured)
     {
         twr_log_info("UPDATE 1 AND 2 RECIEVED AND WILL BE APPLIED");
+
         new_update_configured = false;
         update1_recieved = false;
         update2_recieved = false;
-
-        twr_radio_pub_bool("settings/are/applied", true)
+        twr_radio_pub_bool("settings/are/applied", true);
     }
+
     static int counter = 0;
 
     // Log task run and increment counter
