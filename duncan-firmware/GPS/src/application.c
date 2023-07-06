@@ -67,12 +67,8 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     settings.BATTERY_UPDATE_INTERVAL = ((int)array[1] * 1000 * 60);
     settings.UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000);
     settings.UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000);
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = ((int)array[4] * 1000 * 60);
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = ((int)array[5] * 1000 * 60);
     settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = ((int)array[6] * 1000 * 60);
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = ((int)array[7] * 1000 * 60);
-    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = ((int)array[8] * 1000 * 60);
-    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = ((int)array[9] * 1000 * 60);
 
     update1_recieved = true;
 
@@ -96,16 +92,6 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
         p = strtok(NULL, ",");
     }
     twr_log_info(array);
-    settings.CO2_UPDATE_SERVICE_INTERVAL = ((int)array[0] * 1000 * 60);
-    settings.CO2_UPDATE_NORMAL_INTERVAL = ((int)array[1] * 1000 * 60);
-    settings.VOC_LP_UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000 * 60);
-    settings.VOC_LP_UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000 * 60);
-    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[4] * 1000 * 60);
-    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = ((int)array[5]);
-    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[6] * 1000 * 60);
-    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = ((int)array[7]);
-    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[8] * 1000 * 60);
-    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = ((int)array[9]);
 
     update2_recieved = true;
 
@@ -120,24 +106,31 @@ void twr_gps_event_handler(void *event_param)
     twr_module_gps_quality_t quality;
     twr_module_gps_accuracy_t accurate;
 
-    strcpy(location_status, positionlat_str);
-    strcat(location_status, " ");
-    strcat(location_status, positionlon_str);
+    // Initialize the string buffers
+    char positionlat_str[20];
+    char positionlon_str[20];
+    char altitude_str[20];
+    char accuracy_str[20];
 
-    if(!twr_module_gps_get_time(&time))
+    if (!twr_module_gps_get_time(&time))
     {
         twr_log_info("ERROR!");
     }
+
     twr_module_gps_get_position(&position);
     twr_module_gps_get_altitude(&altitude);
     twr_module_gps_get_quality(&quality);
     twr_module_gps_get_accuracy(&accurate);
 
+    // Format the values into the string buffers
     snprintf(positionlat_str, sizeof(positionlat_str), "%f", position.latitude);
-    snprintf(positionlon_str, sizeof(positionlon_str), "%f",  position.longitude);
+    snprintf(positionlon_str, sizeof(positionlon_str), "%f", position.longitude);
     snprintf(altitude_str, sizeof(altitude_str), "%f", altitude.altitude);
     snprintf(accuracy_str, sizeof(accuracy_str), "%f", accurate.horizontal);
 
+    strcpy(location_status, positionlat_str);
+    strcat(location_status, " ");
+    strcat(location_status, positionlon_str);
 
     twr_radio_pub_string("gps/time/status", "time.year + time.month + time.day + time.hours + time.minutes");
     twr_radio_pub_string("gps/location/status", location_status);
@@ -146,10 +139,10 @@ void twr_gps_event_handler(void *event_param)
     twr_radio_pub_string("gps/accuracy/status", accuracy_str);
 
     twr_log_info("INFO HERE");
-    twr_log_info(&accuracy_str);
-    twr_log_info(&altitude_str);
-    twr_log_info(&positionlat_str);
-    twr_log_info(&positionlon_str);
+    twr_log_info(accuracy_str);
+    twr_log_info(altitude_str);
+    twr_log_info(positionlat_str);
+    twr_log_info(positionlon_str);
 
     char number_str[20];
 
@@ -220,22 +213,8 @@ void application_init(void)
     settings.BATTERY_UPDATE_INTERVAL = (60 * 60 * 1000);
     settings.UPDATE_SERVICE_INTERVAL = (5 * 1000);
     settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
     settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
     settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
-    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.CO2_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
-    settings.CO2_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
-    settings.VOC_LP_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
-    settings.VOC_LP_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
-    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = 0.2f;
-    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = 5.0f;
-    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = 20.0f;
 
     // Initialize LED
     twr_led_init(&led, TWR_GPIO_LED, false, false);

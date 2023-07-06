@@ -295,6 +295,8 @@ static bool _twr_sam_m8q_parse(twr_sam_m8q_t *self, const char *line)
 
         if (minmea_parse_rmc(&frame, line))
         {
+            twr_log_debug("RMC sentence parsed successfully");
+
             if (frame.valid)
             {
                 self->_rmc.date.year = frame.date.year;
@@ -308,7 +310,17 @@ static bool _twr_sam_m8q_parse(twr_sam_m8q_t *self, const char *line)
                 self->_rmc.valid = true;
 
                 ret = true;
+
+                twr_log_debug("RMC sentence is valid");
             }
+            else
+            {
+                twr_log_debug("RMC sentence is invalid");
+            }
+        }
+        else
+        {
+            twr_log_debug("Failed to parse RMC sentence");
         }
     }
     else if (id == MINMEA_SENTENCE_GGA)
@@ -317,12 +329,20 @@ static bool _twr_sam_m8q_parse(twr_sam_m8q_t *self, const char *line)
 
         if (minmea_parse_gga(&frame, line))
         {
+            twr_log_debug("GGA sentence parsed successfully");
+
             self->_gga.fix_quality = frame.fix_quality;
             self->_gga.altitude = minmea_tofloat(&frame.altitude);
             self->_gga.altitude_units = frame.altitude_units;
             self->_gga.valid = true;
 
             ret = true;
+
+            twr_log_debug("GGA sentence processed");
+        }
+        else
+        {
+            twr_log_debug("Failed to parse GGA sentence");
         }
     }
     else if (id == MINMEA_SENTENCE_PUBX)
@@ -331,6 +351,8 @@ static bool _twr_sam_m8q_parse(twr_sam_m8q_t *self, const char *line)
 
         if (minmea_parse_pubx(&frame, line))
         {
+            twr_log_debug("PUBX sentence parsed successfully");
+
             self->_pubx.h_accuracy = minmea_tofloat(&frame.h_accuracy);
             self->_pubx.v_accuracy = minmea_tofloat(&frame.v_accuracy);
             self->_pubx.speed = minmea_tofloat(&frame.speed);
@@ -339,6 +361,12 @@ static bool _twr_sam_m8q_parse(twr_sam_m8q_t *self, const char *line)
             self->_pubx.valid = true;
 
             ret = true;
+
+            twr_log_debug("PUBX sentence processed");
+        }
+        else
+        {
+            twr_log_debug("Failed to parse PUBX sentence");
         }
     }
 
