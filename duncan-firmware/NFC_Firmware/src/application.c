@@ -31,7 +31,7 @@ bool first_update_done = false;
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param);
 void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param);
-void twr_set_nfc(uint64_t *id, const char *topic, void *value, void *param);
+void twr_set_nfc(void *value, void *param);
 
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
@@ -61,12 +61,6 @@ void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
     settings.BATTERY_UPDATE_INTERVAL = ((int)array[1] * 1000 * 60);
     settings.UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000);
     settings.UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000);
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = ((int)array[4] * 1000 * 60);
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = ((int)array[5] * 1000 * 60);
-    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = ((int)array[6] * 1000 * 60);
-    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = ((int)array[7] * 1000 * 60);
-    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = ((int)array[8] * 1000 * 60);
-    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = ((int)array[9] * 1000 * 60);
 
     update1_recieved = true;
 
@@ -78,43 +72,38 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
     (void)param;
 
     twr_log_debug("config2 recieved!");
-
-    char *array[14]; // array with all settings
-    int i = 0;
-    char *p = strtok(value, ","); // change / to whatever you use to split the values
-
-    while (p != NULL) // assign values to array
-    {
-        twr_log_debug(p);
-        array[i++] = p;
-        p = strtok(NULL, ",");
-    }
-    twr_log_info(array);
-    settings.CO2_UPDATE_SERVICE_INTERVAL = ((int)array[0] * 1000 * 60);
-    settings.CO2_UPDATE_NORMAL_INTERVAL = ((int)array[1] * 1000 * 60);
-    settings.VOC_LP_UPDATE_SERVICE_INTERVAL = ((int)array[2] * 1000 * 60);
-    settings.VOC_LP_UPDATE_NORMAL_INTERVAL = ((int)array[3] * 1000 * 60);
-    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[4] * 1000 * 60);
-    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = ((int)array[5]);
-    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[6] * 1000 * 60);
-    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = ((int)array[7]);
-    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = ((int)array[8] * 1000 * 60);
-    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = ((int)array[9]);
-
+    twr_set_nfc(value, NULL);
     update2_recieved = true;
 
     twr_log_info("config loaded. executing main methods");
 }
 
-void twr_set_nfc(uint64_t *id, const char *topic, void *value, void *param)
+void twr_set_nfc(void *value, void *param)
 {
     (void) param;
 
     twr_log_debug(value);
+    twr_log_debug("starting write");
 
-    if(twr_tag_nfc_memory_write(&tag_nfc, value, sizeof(value)))
+    size_t value_size = strlen((char*)value);
+    size_t block_size = 16;
+    size_t max_buffer_size = TWR_TAG_NFC_BUFFER_SIZE;
+
+    size_t aligned_length = (value_size + block_size - 1) / block_size * block_size;
+
+    if (aligned_length > max_buffer_size)
+    {
+        twr_log_debug("Value size exceeds maximum buffer size");
+        return;
+    }
+
+    if (twr_tag_nfc_memory_write(&tag_nfc, value, aligned_length))
     {
         twr_log_debug("nfc memory written");
+    }
+    else
+    {
+        twr_log_debug("failed");
     }
 }
 
@@ -181,22 +170,7 @@ void application_init(void)
     settings.BATTERY_UPDATE_INTERVAL = (60 * 60 * 1000);
     settings.UPDATE_SERVICE_INTERVAL = (5 * 1000);
     settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
-    settings.BAROMETER_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
-    settings.BAROMETER_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.TEMPERATURE_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
-    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.HUMIDITY_UPDATE_SERVICE_INTERVAL = (1 * 60 * 1000);
-    settings.HUMIDITY_UPDATE_NORMAL_INTERVAL = (5 * 60 * 1000);
-    settings.CO2_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
-    settings.CO2_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
-    settings.VOC_LP_UPDATE_NORMAL_INTERVAL = (1 * 60 * 1000);
-    settings.VOC_LP_UPDATE_SERVICE_INTERVAL = (5 * 60 * 1000);
-    settings.TEMPERATURE_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.TEMPERATURE_TAG_PUB_VALUE_CHANGE = 0.2f;
-    settings.HUMIDITY_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.HUMIDITY_TAG_PUB_VALUE_CHANGE = 5.0f;
-    settings.BAROMETER_TAG_PUB_NO_CHANGE_INTERVAL = (15 * 60 * 1000);
-    settings.BAROMETER_TAG_PUB_VALUE_CHANGE = 20.0f;
+    settings.TEMPERATURE_UPDATE_NORMAL_INTERVAL = (60 * 60 * 1000);
 
     // Initialize LED
     twr_led_init(&led, TWR_GPIO_LED, false, false);
@@ -239,12 +213,12 @@ void application_task(void)
         if (_radio_id != 0)
         {
             // id is now known: initialize subscriptions
-            char *id = malloc(32);
+            static char id[32];
             sprintf(id, "%llX", _radio_id);
             twr_log_debug("register with ID %s", id);
             twr_radio_pairing_request(id, "1");
         }
-        twr_scheduler_plan_current_from_now(1000);
+        twr_scheduler_plan_current_from_now(2000);
         return;
     }
     if (update1_recieved && update2_recieved || new_update_configured)
@@ -253,7 +227,7 @@ void application_task(void)
         update1_recieved = false;
         update2_recieved = false;
 
-        twr_radio_pub_bool("settings/are/applied", true)
+        twr_radio_pub_bool("settings/are/applied", true);
     }
     static int counter = 0;
 

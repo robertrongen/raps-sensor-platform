@@ -22,6 +22,13 @@ twr_tmp112_t tmp112;
 
 uint64_t _radio_id;
 
+char accuracy_str[15];
+char altitude_str[15];
+char positionlat_str[15];
+char positionlon_str[15];
+
+char location_status[50];
+
 bool update1_recieved = false;
 bool update2_recieved = false;
 bool new_update_configured = false;
@@ -107,11 +114,47 @@ void twr_get_config2(uint64_t *id, const char *topic, void *value, void *param)
 
 void twr_gps_event_handler(void *event_param)
 {
-    twr_radio_pub_string("gps/time/status", twr_module_gps_get_time);
-    twr_radio_pub_string("gps/location/status", twr_module_gps_get_position);
-    twr_radio_pub_string("gps/altitude/status", twr_module_gps_get_altitude);
-    twr_radio_pub_string("gps/quality/status", twr_module_gps_get_quality);
-    twr_radio_pub_string("gps/accuracy/status", twr_module_gps_get_accuracy);
+    twr_module_gps_time_t time;
+    twr_module_gps_position_t position;
+    twr_module_gps_altitude_t altitude;
+    twr_module_gps_quality_t quality;
+    twr_module_gps_accuracy_t accurate;
+
+    strcpy(location_status, positionlat_str);
+    strcat(location_status, " ");
+    strcat(location_status, positionlon_str);
+
+    if(!twr_module_gps_get_time(&time))
+    {
+        twr_log_info("ERROR!");
+    }
+    twr_module_gps_get_position(&position);
+    twr_module_gps_get_altitude(&altitude);
+    twr_module_gps_get_quality(&quality);
+    twr_module_gps_get_accuracy(&accurate);
+
+    snprintf(positionlat_str, sizeof(positionlat_str), "%f", position.latitude);
+    snprintf(positionlon_str, sizeof(positionlon_str), "%f",  position.longitude);
+    snprintf(altitude_str, sizeof(altitude_str), "%f", altitude.altitude);
+    snprintf(accuracy_str, sizeof(accuracy_str), "%f", accurate.horizontal);
+
+
+    twr_radio_pub_string("gps/time/status", "time.year + time.month + time.day + time.hours + time.minutes");
+    twr_radio_pub_string("gps/location/status", location_status);
+    twr_radio_pub_string("gps/altitude/status", altitude_str);
+    twr_radio_pub_string("gps/quality/status", "quality.satellites_tracked");
+    twr_radio_pub_string("gps/accuracy/status", accuracy_str);
+
+    twr_log_info("INFO HERE");
+    twr_log_info(&accuracy_str);
+    twr_log_info(&altitude_str);
+    twr_log_info(&positionlat_str);
+    twr_log_info(&positionlon_str);
+
+    char number_str[20];
+
+    snprintf(number_str, sizeof(number_str), "%d", quality.satellites_tracked);
+    twr_log_info(number_str);
 }
 
 void tmp112_event_handler(twr_tmp112_t *self, twr_tmp112_event_t event, void *event_param)
@@ -173,7 +216,7 @@ void application_init(void)
     // Initialize logging
     twr_log_init(TWR_LOG_LEVEL_DUMP, TWR_LOG_TIMESTAMP_ABS);
 
-    settings.SERVICE_INTERVAL_INTERVAL = (1 * 60 * 1000);
+    settings.SERVICE_INTERVAL_INTERVAL = (1000);
     settings.BATTERY_UPDATE_INTERVAL = (60 * 60 * 1000);
     settings.UPDATE_SERVICE_INTERVAL = (5 * 1000);
     settings.UPDATE_NORMAL_INTERVAL = (10 * 1000);
@@ -212,9 +255,12 @@ void application_init(void)
     twr_module_battery_set_update_interval(settings.BATTERY_UPDATE_INTERVAL);
 
     // Initialize all components
-    twr_module_gps_init();
+    if(!twr_module_gps_init()) {
+        twr_log_error("INIT DOESNT WORK!");
+    }
     twr_module_gps_set_event_handler(twr_gps_event_handler, NULL);
     twr_module_gps_start();
+
 
 
     static twr_tmp112_t temperature;
