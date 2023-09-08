@@ -35,8 +35,7 @@ void twr_set_nfc(void *value, void *param);
 
 static const twr_radio_sub_t subs[] = {
     {"raps/-/get/config1", TWR_RADIO_SUB_PT_STRING, twr_get_config1, NULL},
-    {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL},
-    {"raps/-/set/nfc", TWR_RADIO_SUB_PT_STRING, }
+    {"raps/-/get/config2", TWR_RADIO_SUB_PT_STRING, twr_get_config2, NULL}
 };
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)
@@ -236,5 +235,5 @@ void application_task(void)
 
     // Plan next run of this task in 1000 ms
     //twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
-    twr_scheduler_plan_current_from_now(settings.SERVICE_INTERVAL_INTERVAL);
+    twr_scheduler_plan_current_from_now(1000);
 }

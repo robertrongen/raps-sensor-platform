@@ -48,7 +48,9 @@ static const twr_radio_sub_t subs[] = {
 
 void pir_event_handler(twr_module_pir_t *self, twr_module_pir_event_t event, void *event_param)
 {
-    twr_radio_pub_string("PIR", "Movement found!");
+    twr_radio_pub_string("PIR/-/message", "Movement found!");
+    twr_log_debug("pir works");
+    twr_scheduler_plan_current_from_now(1000);
 }
 
 void twr_get_config1(uint64_t *id, const char *topic, void *value, void *param)

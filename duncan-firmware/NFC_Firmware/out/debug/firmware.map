@@ -28728,7 +28728,7 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
                 0x08000000                g_pfnVectors
                 0x080000c0                . = ALIGN (0x4)
 
-.text           0x080000c0    0x12de8
+.text           0x080000c0    0x12de4
                 0x080000c0                . = ALIGN (0x4)
  *(.text)
  .text          0x080000c0      0x114 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
@@ -30083,284 +30083,284 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
                 0x0800a518       0xd8 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
                 0x0800a518                application_init
  .text.application_task
-                0x0800a5f0       0xd0 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
+                0x0800a5f0       0xcc sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
                 0x0800a5f0                application_task
  .text.__muldi3
-                0x0800a6c0       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_muldi3.o)
-                0x0800a6c0                __muldi3
-                0x0800a6c0                __aeabi_lmul
+                0x0800a6bc       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_muldi3.o)
+                0x0800a6bc                __muldi3
+                0x0800a6bc                __aeabi_lmul
  .text.__fixunssfsi
-                0x0800a71c       0x30 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_fixunssfsi.o)
-                0x0800a71c                __fixunssfsi
-                0x0800a71c                __aeabi_f2uiz
+                0x0800a718       0x30 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_fixunssfsi.o)
+                0x0800a718                __fixunssfsi
+                0x0800a718                __aeabi_f2uiz
  .text.__fixunsdfsi
-                0x0800a74c       0x3c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_fixunsdfsi.o)
-                0x0800a74c                __aeabi_d2uiz
-                0x0800a74c                __fixunsdfsi
+                0x0800a748       0x3c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_fixunsdfsi.o)
+                0x0800a748                __aeabi_d2uiz
+                0x0800a748                __fixunsdfsi
  .text.__udivmoddi4
-                0x0800a788      0x198 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x0800a788                __udivmoddi4
+                0x0800a784      0x198 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x0800a784                __udivmoddi4
  .text.__aeabi_fdiv
-                0x0800a920      0x240 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
-                0x0800a920                __aeabi_fdiv
- .text.__eqsf2  0x0800ab60       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(eqsf2.o)
-                0x0800ab60                __eqsf2
-                0x0800ab60                __nesf2
- .text.__gesf2  0x0800abb0       0xa0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(gesf2.o)
-                0x0800abb0                __gesf2
-                0x0800abb0                __gtsf2
- .text.__lesf2  0x0800ac50       0x9c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(lesf2.o)
-                0x0800ac50                __ltsf2
-                0x0800ac50                __lesf2
+                0x0800a91c      0x240 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
+                0x0800a91c                __aeabi_fdiv
+ .text.__eqsf2  0x0800ab5c       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(eqsf2.o)
+                0x0800ab5c                __eqsf2
+                0x0800ab5c                __nesf2
+ .text.__gesf2  0x0800abac       0xa0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(gesf2.o)
+                0x0800abac                __gesf2
+                0x0800abac                __gtsf2
+ .text.__lesf2  0x0800ac4c       0x9c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(lesf2.o)
+                0x0800ac4c                __ltsf2
+                0x0800ac4c                __lesf2
  .text.__aeabi_fmul
-                0x0800acec      0x27c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
-                0x0800acec                __aeabi_fmul
+                0x0800ace8      0x27c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+                0x0800ace8                __aeabi_fmul
  .text.__aeabi_fsub
-                0x0800af68      0x324 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(subsf3.o)
-                0x0800af68                __aeabi_fsub
+                0x0800af64      0x324 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(subsf3.o)
+                0x0800af64                __aeabi_fsub
  .text.__aeabi_fcmpun
-                0x0800b28c       0x2c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(unordsf2.o)
-                0x0800b28c                __aeabi_fcmpun
+                0x0800b288       0x2c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(unordsf2.o)
+                0x0800b288                __aeabi_fcmpun
  .text.__aeabi_f2iz
-                0x0800b2b8       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(fixsfsi.o)
-                0x0800b2b8                __aeabi_f2iz
+                0x0800b2b4       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(fixsfsi.o)
+                0x0800b2b4                __aeabi_f2iz
  .text.__aeabi_i2f
-                0x0800b2f8       0x98 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
-                0x0800b2f8                __aeabi_i2f
+                0x0800b2f4       0x98 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+                0x0800b2f4                __aeabi_i2f
  .text.__aeabi_ui2f
-                0x0800b390       0x84 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatunsisf.o)
-                0x0800b390                __aeabi_ui2f
+                0x0800b38c       0x84 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatunsisf.o)
+                0x0800b38c                __aeabi_ui2f
  .text.__aeabi_dadd
-                0x0800b414      0x6bc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(adddf3.o)
-                0x0800b414                __aeabi_dadd
+                0x0800b410      0x6bc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(adddf3.o)
+                0x0800b410                __aeabi_dadd
  .text.__aeabi_ddiv
-                0x0800bad0      0x638 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
-                0x0800bad0                __aeabi_ddiv
- .text.__eqdf2  0x0800c108       0x88 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(eqdf2.o)
-                0x0800c108                __nedf2
-                0x0800c108                __eqdf2
- .text.__gedf2  0x0800c190       0xe8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(gedf2.o)
-                0x0800c190                __gedf2
-                0x0800c190                __gtdf2
- .text.__ledf2  0x0800c278       0xe4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(ledf2.o)
-                0x0800c278                __ledf2
-                0x0800c278                __ltdf2
+                0x0800bacc      0x638 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
+                0x0800bacc                __aeabi_ddiv
+ .text.__eqdf2  0x0800c104       0x88 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(eqdf2.o)
+                0x0800c104                __nedf2
+                0x0800c104                __eqdf2
+ .text.__gedf2  0x0800c18c       0xe8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(gedf2.o)
+                0x0800c18c                __gedf2
+                0x0800c18c                __gtdf2
+ .text.__ledf2  0x0800c274       0xe4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(ledf2.o)
+                0x0800c274                __ledf2
+                0x0800c274                __ltdf2
  .text.__aeabi_dmul
-                0x0800c35c      0x588 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(muldf3.o)
-                0x0800c35c                __aeabi_dmul
+                0x0800c358      0x588 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(muldf3.o)
+                0x0800c358                __aeabi_dmul
  .text.__aeabi_dsub
-                0x0800c8e4      0x704 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(subdf3.o)
-                0x0800c8e4                __aeabi_dsub
+                0x0800c8e0      0x704 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(subdf3.o)
+                0x0800c8e0                __aeabi_dsub
  .text.__aeabi_d2iz
-                0x0800cfe8       0x78 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(fixdfsi.o)
-                0x0800cfe8                __aeabi_d2iz
+                0x0800cfe4       0x78 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(fixdfsi.o)
+                0x0800cfe4                __aeabi_d2iz
  .text.__aeabi_i2d
-                0x0800d060       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatsidf.o)
-                0x0800d060                __aeabi_i2d
+                0x0800d05c       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatsidf.o)
+                0x0800d05c                __aeabi_i2d
  .text.__aeabi_ui2d
-                0x0800d0c0       0x4c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatunsidf.o)
-                0x0800d0c0                __aeabi_ui2d
+                0x0800d0bc       0x4c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(floatunsidf.o)
+                0x0800d0bc                __aeabi_ui2d
  .text.__aeabi_f2d
-                0x0800d10c       0x90 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(extendsfdf2.o)
-                0x0800d10c                __aeabi_f2d
+                0x0800d108       0x90 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(extendsfdf2.o)
+                0x0800d108                __aeabi_f2d
  .text.__aeabi_d2f
-                0x0800d19c      0x118 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(truncdfsf2.o)
-                0x0800d19c                __aeabi_d2f
- .text.rand     0x0800d2b4       0x34 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-rand.o)
-                0x0800d2b4                rand
- .text.sprintf  0x0800d2e8       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-sprintf.o)
-                0x0800d2e8                sprintf
+                0x0800d198      0x118 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(truncdfsf2.o)
+                0x0800d198                __aeabi_d2f
+ .text.rand     0x0800d2b0       0x34 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-rand.o)
+                0x0800d2b0                rand
+ .text.sprintf  0x0800d2e4       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-sprintf.o)
+                0x0800d2e4                sprintf
  .text.vsnprintf
-                0x0800d328       0x6c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vsnprintf.o)
-                0x0800d328                vsnprintf
- .text.memcmp   0x0800d394       0x44 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memcmp.o)
-                0x0800d394                memcmp
- .text.memmove  0x0800d3d8       0xb0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memmove.o)
-                0x0800d3d8                memmove
- .text.strncpy  0x0800d488       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strncpy.o)
-                0x0800d488                strncpy
- .text.strtok   0x0800d4e8       0x14 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strtok.o)
-                0x0800d4e8                strtok
+                0x0800d324       0x6c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vsnprintf.o)
+                0x0800d324                vsnprintf
+ .text.memcmp   0x0800d390       0x44 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memcmp.o)
+                0x0800d390                memcmp
+ .text.memmove  0x0800d3d4       0xb0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memmove.o)
+                0x0800d3d4                memmove
+ .text.strncpy  0x0800d484       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strncpy.o)
+                0x0800d484                strncpy
+ .text.strtok   0x0800d4e4       0x14 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strtok.o)
+                0x0800d4e4                strtok
  .text.__strtok_r
-                0x0800d4fc       0x68 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strtok_r.o)
-                0x0800d4fc                __strtok_r
- .text.strcpy   0x0800d564       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strcpy.o)
-                0x0800d564                strcpy
- .text.memcpy   0x0800d574       0x90 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memcpy-stub.o)
-                0x0800d574                memcpy
- .text.strlen   0x0800d604       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strlen-stub.o)
-                0x0800d604                strlen
+                0x0800d4f8       0x68 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strtok_r.o)
+                0x0800d4f8                __strtok_r
+ .text.strcpy   0x0800d560       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strcpy.o)
+                0x0800d560                strcpy
+ .text.memcpy   0x0800d570       0x90 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memcpy-stub.o)
+                0x0800d570                memcpy
+ .text.strlen   0x0800d600       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-strlen-stub.o)
+                0x0800d600                strlen
  .text._svfprintf_r
-                0x0800d660     0x1ca0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
-                0x0800d660                _svfprintf_r
+                0x0800d65c     0x1ca0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
+                0x0800d65c                _svfprintf_r
  .text.__locale_mb_cur_max
-                0x0800f300       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-locale.o)
-                0x0800f300                __locale_mb_cur_max
+                0x0800f2fc       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-locale.o)
+                0x0800f2fc                __locale_mb_cur_max
  .text._localeconv_r
-                0x0800f310        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-localeconv.o)
-                0x0800f310                _localeconv_r
- .text.memchr   0x0800f318       0x74 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memchr-stub.o)
-                0x0800f318                memchr
- .text.frexp    0x0800f38c       0x68 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libm_a-s_frexp.o)
-                0x0800f38c                frexp
- .text.quorem   0x0800f3f4      0x154 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
- .text._dtoa_r  0x0800f548      0xfcc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
-                0x0800f548                _dtoa_r
+                0x0800f30c        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-localeconv.o)
+                0x0800f30c                _localeconv_r
+ .text.memchr   0x0800f314       0x74 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-memchr-stub.o)
+                0x0800f314                memchr
+ .text.frexp    0x0800f388       0x68 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libm_a-s_frexp.o)
+                0x0800f388                frexp
+ .text.quorem   0x0800f3f0      0x154 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
+ .text._dtoa_r  0x0800f544      0xfcc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
+                0x0800f544                _dtoa_r
  .text.__ascii_mbtowc
-                0x08010514       0x2c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mbtowc_r.o)
-                0x08010514                __ascii_mbtowc
- .text._Balloc  0x08010540       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010540                _Balloc
- .text._Bfree   0x08010590       0x14 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010590                _Bfree
+                0x08010510       0x2c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mbtowc_r.o)
+                0x08010510                __ascii_mbtowc
+ .text._Balloc  0x0801053c       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x0801053c                _Balloc
+ .text._Bfree   0x0801058c       0x14 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x0801058c                _Bfree
  .text.__multadd
-                0x080105a4       0xa8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x080105a4                __multadd
+                0x080105a0       0xa8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x080105a0                __multadd
  .text.__hi0bits
-                0x0801064c       0x4c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x0801064c                __hi0bits
+                0x08010648       0x4c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010648                __hi0bits
  .text.__lo0bits
-                0x08010698       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010698                __lo0bits
- .text.__i2b    0x080106f4       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x080106f4                __i2b
+                0x08010694       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010694                __lo0bits
+ .text.__i2b    0x080106f0       0x60 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x080106f0                __i2b
  .text.__multiply
-                0x08010754      0x1b0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010754                __multiply
+                0x08010750      0x1b0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010750                __multiply
  .text.__pow5mult
-                0x08010904       0xd0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010904                __pow5mult
+                0x08010900       0xd0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010900                __pow5mult
  .text.__lshift
-                0x080109d4       0xfc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x080109d4                __lshift
- .text.__mcmp   0x08010ad0       0x3c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010ad0                __mcmp
- .text.__mdiff  0x08010b0c      0x1a4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010b0c                __mdiff
- .text.__d2b    0x08010cb0       0xd0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08010cb0                __d2b
+                0x080109d0       0xfc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x080109d0                __lshift
+ .text.__mcmp   0x08010acc       0x3c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010acc                __mcmp
+ .text.__mdiff  0x08010b08      0x1a4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010b08                __mdiff
+ .text.__d2b    0x08010cac       0xd0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08010cac                __d2b
  .text.__ascii_wctomb
-                0x08010d80       0x1c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wctomb_r.o)
-                0x08010d80                __ascii_wctomb
+                0x08010d7c       0x1c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wctomb_r.o)
+                0x08010d7c                __ascii_wctomb
  .text._wcrtomb_r
-                0x08010d9c       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcrtomb.o)
-                0x08010d9c                _wcrtomb_r
+                0x08010d98       0x50 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcrtomb.o)
+                0x08010d98                _wcrtomb_r
  .text._wcsrtombs_r
-                0x08010dec       0x18 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsrtombs.o)
-                0x08010dec                _wcsrtombs_r
+                0x08010de8       0x18 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsrtombs.o)
+                0x08010de8                _wcsrtombs_r
  .text.__ssprint_r
-                0x08010e04      0x110 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfiprintf.o)
-                0x08010e04                __ssprint_r
+                0x08010e00      0x110 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfiprintf.o)
+                0x08010e00                __ssprint_r
  .text.__assert_func
-                0x08010f14       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-assert.o)
-                0x08010f14                __assert_func
+                0x08010f10       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-assert.o)
+                0x08010f10                __assert_func
  .text._calloc_r
-                0x08010f54       0xa8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-callocr.o)
-                0x08010f54                _calloc_r
+                0x08010f50       0xa8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-callocr.o)
+                0x08010f50                _calloc_r
  .text._realloc_r
-                0x08010ffc      0x3c8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-reallocr.o)
-                0x08010ffc                _realloc_r
+                0x08010ff8      0x3c8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-reallocr.o)
+                0x08010ff8                _realloc_r
  .text._wcsnrtombs_l
-                0x080113c4      0x114 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsnrtombs.o)
-                0x080113c4                _wcsnrtombs_l
+                0x080113c0      0x114 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsnrtombs.o)
+                0x080113c0                _wcsnrtombs_l
  .text._wcsnrtombs_r
-                0x080114d8       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsnrtombs.o)
-                0x080114d8                _wcsnrtombs_r
+                0x080114d4       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wcsnrtombs.o)
+                0x080114d4                _wcsnrtombs_r
  .text.fiprintf
-                0x080114fc       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fiprintf.o)
-                0x080114fc                fiprintf
+                0x080114f8       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fiprintf.o)
+                0x080114f8                fiprintf
  .text.__sprint_r.part.0
-                0x08011520       0x88 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x0801151c       0x88 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
  .text._vfiprintf_r
-                0x080115a8      0xfcc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
-                0x080115a8                _vfiprintf_r
+                0x080115a4      0xfcc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x080115a4                _vfiprintf_r
  .text.__sbprintf
-                0x08012574       0x8c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x08012570       0x8c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
  .text.__sfvwrite_r
-                0x08012600      0x2ec c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fvwrite.o)
-                0x08012600                __sfvwrite_r
+                0x080125fc      0x2ec c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fvwrite.o)
+                0x080125fc                __sfvwrite_r
  .text.__swsetup_r
-                0x080128ec       0xc8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wsetup.o)
-                0x080128ec                __swsetup_r
+                0x080128e8       0xc8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wsetup.o)
+                0x080128e8                __swsetup_r
  .text.__fputwc
-                0x080129b4       0x78 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fputwc.o)
-                0x080129b4                __fputwc
+                0x080129b0       0x78 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fputwc.o)
+                0x080129b0                __fputwc
  .text._fputwc_r
-                0x08012a2c       0x58 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fputwc.o)
-                0x08012a2c                _fputwc_r
- .text.abort    0x08012a84       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-abort.o)
-                0x08012a84                abort
+                0x08012a28       0x58 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fputwc.o)
+                0x08012a28                _fputwc_r
+ .text.abort    0x08012a80       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-abort.o)
+                0x08012a80                abort
  .text.__smakebuf_r
-                0x08012a94       0xe0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-makebuf.o)
-                0x08012a94                __smakebuf_r
+                0x08012a90       0xe0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-makebuf.o)
+                0x08012a90                __smakebuf_r
  .text.__swbuf_r
-                0x08012b74       0xc4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wbuf.o)
-                0x08012b74                __swbuf_r
- .text.raise    0x08012c38       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signal.o)
-                0x08012c38                raise
+                0x08012b70       0xc4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-wbuf.o)
+                0x08012b70                __swbuf_r
+ .text.raise    0x08012c34       0x5c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signal.o)
+                0x08012c34                raise
  .text._fstat_r
-                0x08012c94       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fstatr.o)
-                0x08012c94                _fstat_r
+                0x08012c90       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-fstatr.o)
+                0x08012c90                _fstat_r
  .text._isatty_r
-                0x08012cbc       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-isattyr.o)
-                0x08012cbc                _isatty_r
- .text._kill_r  0x08012ce0       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signalr.o)
-                0x08012ce0                _kill_r
+                0x08012cb8       0x24 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-isattyr.o)
+                0x08012cb8                _isatty_r
+ .text._kill_r  0x08012cdc       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signalr.o)
+                0x08012cdc                _kill_r
  .text._getpid_r
-                0x08012d08        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signalr.o)
-                0x08012d08                _getpid_r
+                0x08012d04        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-signalr.o)
+                0x08012d04                _getpid_r
  .text.__aeabi_dcmpun
-                0x08012d10       0x44 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(unorddf2.o)
-                0x08012d10                __aeabi_dcmpun
- .text._close   0x08012d54       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(close.o)
-                0x08012d54                _close
- .text._fstat   0x08012d64       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(fstat.o)
-                0x08012d64                _fstat
- .text._getpid  0x08012d74       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(getpid.o)
-                0x08012d74                _getpid
- .text._isatty  0x08012d84       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(isatty.o)
-                0x08012d84                _isatty
- .text._kill    0x08012d94       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(kill.o)
-                0x08012d94                _kill
- .text._lseek   0x08012da4       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(lseek.o)
-                0x08012da4                _lseek
- .text._read    0x08012db4       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(read.o)
-                0x08012db4                _read
- .text._sbrk    0x08012dc4       0x1c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(sbrk.o)
-                0x08012dc4                _sbrk
- .text._write   0x08012de0       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(write.o)
-                0x08012de0                _write
- .text._exit    0x08012df0        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(_exit.o)
-                0x08012df0                _exit
- .text.round    0x08012df4       0x9c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libm.a(libm_a-s_round.o)
-                0x08012df4                round
+                0x08012d0c       0x44 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(unorddf2.o)
+                0x08012d0c                __aeabi_dcmpun
+ .text._close   0x08012d50       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(close.o)
+                0x08012d50                _close
+ .text._fstat   0x08012d60       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(fstat.o)
+                0x08012d60                _fstat
+ .text._getpid  0x08012d70       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(getpid.o)
+                0x08012d70                _getpid
+ .text._isatty  0x08012d80       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(isatty.o)
+                0x08012d80                _isatty
+ .text._kill    0x08012d90       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(kill.o)
+                0x08012d90                _kill
+ .text._lseek   0x08012da0       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(lseek.o)
+                0x08012da0                _lseek
+ .text._read    0x08012db0       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(read.o)
+                0x08012db0                _read
+ .text._sbrk    0x08012dc0       0x1c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(sbrk.o)
+                0x08012dc0                _sbrk
+ .text._write   0x08012ddc       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(write.o)
+                0x08012ddc                _write
+ .text._exit    0x08012dec        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libnosys.a(_exit.o)
+                0x08012dec                _exit
+ .text.round    0x08012df0       0x9c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libm.a(libm_a-s_round.o)
+                0x08012df0                round
  *(.glue_7)
- .glue_7        0x08012e90        0x0 linker stubs
+ .glue_7        0x08012e8c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08012e90        0x0 linker stubs
+ .glue_7t       0x08012e8c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08012e90        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
+ .eh_frame      0x08012e8c        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
  *(.init)
- .init          0x08012e90        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crti.o
-                0x08012e90                _init
- .init          0x08012e94        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtn.o
+ .init          0x08012e8c        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crti.o
+                0x08012e8c                _init
+ .init          0x08012e90        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtn.o
  *(.fini)
- .fini          0x08012e9c        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crti.o
-                0x08012e9c                _fini
- .fini          0x08012ea0        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtn.o
-                0x08012ea8                . = ALIGN (0x4)
-                0x08012ea8                _etext = .
+ .fini          0x08012e98        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crti.o
+                0x08012e98                _fini
+ .fini          0x08012e9c        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtn.o
+                0x08012ea4                . = ALIGN (0x4)
+                0x08012ea4                _etext = .
 
-.vfp11_veneer   0x08012ea8        0x0
- .vfp11_veneer  0x08012ea8        0x0 linker stubs
+.vfp11_veneer   0x08012ea4        0x0
+ .vfp11_veneer  0x08012ea4        0x0 linker stubs
 
-.v4_bx          0x08012ea8        0x0
- .v4_bx         0x08012ea8        0x0 linker stubs
+.v4_bx          0x08012ea4        0x0
+ .v4_bx         0x08012ea4        0x0 linker stubs
 
-.iplt           0x08012ea8        0x0
- .iplt          0x08012ea8        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
+.iplt           0x08012ea4        0x0
+ .iplt          0x08012ea4        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x08012ea8      0xfb4
+.rodata         0x08012ea8      0xf94
                 0x08012ea8                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
@@ -30461,94 +30461,94 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
                 0x08013578       0x66 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
  *fill*         0x080135de        0x2 
  .rodata.str1.4
-                0x080135e0       0x37 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
- *fill*         0x08013617        0x1 
- .rodata.subs   0x08013618       0x30 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
+                0x080135e0       0x27 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
+ *fill*         0x08013607        0x1 
+ .rodata.subs   0x08013608       0x20 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
  .rodata.__aeabi_fdiv
-                0x08013648       0x7c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
+                0x08013628       0x7c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divsf3.o)
  .rodata.__aeabi_ddiv
-                0x080136c4       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
+                0x080136a4       0x40 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(divdf3.o)
  .rodata._ctype_
-                0x08013704      0x101 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-ctype_.o)
-                0x08013704                _ctype_
- *fill*         0x08013805        0x3 
+                0x080136e4      0x101 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-ctype_.o)
+                0x080136e4                _ctype_
+ *fill*         0x080137e5        0x3 
  .rodata._svfprintf_r.str1.4
-                0x08013808       0x42 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
- *fill*         0x0801384a        0x2 
+                0x080137e8       0x42 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
+ *fill*         0x0801382a        0x2 
  .rodata._svfprintf_r
-                0x0801384c      0x204 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
+                0x0801382c      0x204 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
  .rodata.zeroes.0
-                0x08013a50       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
+                0x08013a30       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
  .rodata.blanks.1
-                0x08013a60       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
+                0x08013a40       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-svfprintf.o)
  .rodata.str1.4
-                0x08013a70       0x48 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-locale.o)
+                0x08013a50       0x48 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-locale.o)
                                  0x4c (size before relaxing)
  .rodata._dtoa_r.str1.4
-                0x08013ab8       0x7d c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
+                0x08013a98       0x7d c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-dtoa.o)
                                  0x81 (size before relaxing)
- *fill*         0x08013b35        0x3 
+ *fill*         0x08013b15        0x3 
  .rodata.__multadd.str1.4
-                0x08013b38       0x5a c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08013b18       0x5a c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
                                  0x6e (size before relaxing)
- *fill*         0x08013b92        0x2 
- .rodata.p05.0  0x08013b94        0xc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+ *fill*         0x08013b72        0x2 
+ .rodata.p05.0  0x08013b74        0xc c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
  .rodata.__mprec_bigtens
-                0x08013ba0       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08013ba0                __mprec_bigtens
+                0x08013b80       0x28 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08013b80                __mprec_bigtens
  .rodata.__mprec_tens
-                0x08013bc8       0xc8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
-                0x08013bc8                __mprec_tens
+                0x08013ba8       0xc8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-mprec.o)
+                0x08013ba8                __mprec_tens
  .rodata.__assert_func.str1.4
-                0x08013c90       0x3f c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-assert.o)
+                0x08013c70       0x3f c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-assert.o)
                                  0x43 (size before relaxing)
  .rodata._vfiprintf_r.str1.4
-                0x08013ccf       0x2f c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
- *fill*         0x08013ccf        0x1 
+                0x08013caf       0x2f c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+ *fill*         0x08013caf        0x1 
  .rodata._vfiprintf_r
-                0x08013cd0      0x16c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x08013cb0      0x16c c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
  .rodata.zeroes.0
-                0x08013e3c       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x08013e1c       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
  .rodata.blanks.1
-                0x08013e4c       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
-                0x08013e5c                . = ALIGN (0x4)
+                0x08013e2c       0x10 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-vfiprintf.o)
+                0x08013e3c                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x08013e5c        0x8
-                0x08013e5c                __exidx_start = .
+.ARM            0x08013e3c        0x8
+                0x08013e3c                __exidx_start = .
  *(.ARM.exidx*)
  .ARM.exidx.text.__udivmoddi4
-                0x08013e5c        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x08013e64                __exidx_end = .
+                0x08013e3c        0x8 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x08013e44                __exidx_end = .
 
-.rel.dyn        0x08013e64        0x0
- .rel.iplt      0x08013e64        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
+.rel.dyn        0x08013e44        0x0
+ .rel.iplt      0x08013e44        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
 
-.preinit_array  0x08013e64        0x0
-                0x08013e64                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08013e44        0x0
+                0x08013e44                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08013e64                PROVIDE (__preinit_array_end = .)
+                0x08013e44                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x08013e64        0x8
-                0x08013e64                PROVIDE (__init_array_start = .)
+.init_array     0x08013e44        0x8
+                0x08013e44                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x08013e64        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-__call_atexit.o)
+                0x08013e44        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp\libc.a(libc_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x08013e68        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
-                0x08013e6c                PROVIDE (__init_array_end = .)
+ .init_array    0x08013e48        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x08013e4c                PROVIDE (__init_array_end = .)
 
-.fini_array     0x08013e6c        0x4
-                0x08013e6c                PROVIDE (__fini_array_start = .)
+.fini_array     0x08013e4c        0x4
+                0x08013e4c                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08013e6c        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
-                0x08013e70                PROVIDE (__fini_array_end = .)
-                0x08013e70                _sidata = LOADADDR (.data)
+ .fini_array    0x08013e4c        0x4 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x08013e50                PROVIDE (__fini_array_end = .)
+                0x08013e50                _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x7dc load address 0x08013e70
+.data           0x20000000      0x7dc load address 0x08013e50
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -30610,17 +30610,17 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
                 0x200007dc                _edata = .
 
 .tm_clone_table
-                0x200007dc        0x0 load address 0x0801464c
+                0x200007dc        0x0 load address 0x0801462c
  .tm_clone_table
                 0x200007dc        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
  .tm_clone_table
                 0x200007dc        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtend.o
 
-.igot.plt       0x200007dc        0x0 load address 0x0801464c
+.igot.plt       0x200007dc        0x0 load address 0x0801462c
  .igot.plt      0x200007dc        0x0 c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v6-m/nofp/crtbegin.o
                 0x200007dc                . = ALIGN (0x4)
 
-.bss            0x200007e0     0x1100 load address 0x0801464c
+.bss            0x200007e0     0x1100 load address 0x0801462c
                 0x200007e0                _sbss = .
                 0x200007e0                __bss_start__ = _sbss
  *(.bss)
@@ -30769,7 +30769,7 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
                 0x200018e0                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200018e0      0x480 load address 0x0801464c
+                0x200018e0      0x480 load address 0x0801462c
                 0x200018e0                . = ALIGN (0x4)
                 0x200018e0                PROVIDE (end = .)
                 [!provide]                PROVIDE (_end = .)
@@ -31942,7 +31942,7 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
  .debug_macro   0x00022726      0x177 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
  .debug_macro   0x0002289d       0x97 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
 
-.debug_line     0x00000000    0x29b4b
+.debug_line     0x00000000    0x29b45
  .debug_line    0x00000000      0xaa9 sdk/CMakeFiles/firmware.dir/twr/src/main.c.obj
  .debug_line    0x00000aa9      0xe4a sdk/CMakeFiles/firmware.dir/twr/src/twr_adc.c.obj
  .debug_line    0x000018f3      0x911 sdk/CMakeFiles/firmware.dir/twr/src/twr_atsha204.c.obj
@@ -32000,7 +32000,7 @@ LOAD c:/users/dunca/appdata/local/programs/hardwa~2/data/tower/toolch~1/gcc/bin/
  .debug_line    0x0002743a      0x9b5 sdk/CMakeFiles/firmware.dir/stm/usb/src/usbd_ioreq.c.obj
  .debug_line    0x00027def       0x78 sdk/CMakeFiles/firmware.dir/sys/src/startup_stm32l083xx.s.obj
  .debug_line    0x00027e67      0x961 sdk/CMakeFiles/firmware.dir/sys/src/system_stm32l0xx.c.obj
- .debug_line    0x000287c8     0x1383 sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
+ .debug_line    0x000287c8     0x137d sdk/CMakeFiles/firmware.dir/__/src/application.c.obj
 
 .debug_str      0x00000000    0xb45de
  .debug_str     0x00000000    0x7f783 sdk/CMakeFiles/firmware.dir/twr/src/main.c.obj
